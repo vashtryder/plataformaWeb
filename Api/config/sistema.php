@@ -1,5 +1,5 @@
 <?php
-	class cargarFuncion
+	class Sistema
 	{
         public static function a_romano($integer, $upcase = true)
         {
@@ -233,7 +233,7 @@
             return date('Y-m-d', $sol);
         }
 
-		    public static function imprimir($value=''){
+		public static function imprimir($value=''){
             print_r($value);
         }
 

@@ -148,205 +148,18 @@
 
     <!--begin::Page Vendors -->
 
-    <script src="view/js/sistema.js" type="text/javascript"></script>
+	<script src="Api/js/sistema.js" type="text/javascript"></script>
 
-    <?php
-        switch ($_REQUEST['s']) {
-             case 'direccionPerfil':
-             case 'tutorProceso':
-
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'tutorListaEstudiante':
-            case 'reporteGrado':
-            case 'tutorPerfil':
-            case 'reporteAula':
-            case 'reporteMerito':
-            case 'reporteRespuesta':
-            case 'reporteEstudiante':
-            case 'reporteGrupo':
-            case 'tutorSabana':
-            case 'tutorCuadro':
-            case 'direccionMatricula':
-            case 'tutorSemana':
-            case 'direccionSemana':
-
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/estudiante.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/tutor/tutor.js" type="text/javascript"></script>');
-
-                break;
-
-            case 'direccionAsignacion':
-                print_r('<script src="view/js/director/asignacion.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'direccionInstitucion':
-                print_r('<script src="view/js/director/institucion.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'direccionDocente':
-            case 'direccionUsuario':
-            case 'direccionMensaje':
-            case 'tutorDocente':
-            case 'tutorMensajes':
-                print_r('<script src="view/js/director/personal.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'direccionImportarEstudiante':
-            case 'administradorImportarEstudiante':
-            case 'administradorImportarDocente':
-            case 'administradorRespuesta':
-                print_r('<script src="view/js/administrador/importar.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'tutorHistoria':
-                print_r('<script src="view/js/tutor/historia.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorInstitucion':
-                print_r('<script src="view/js/administrador/institucion.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorMatricula':
-                print_r('<script src="view/js/administrador/estudiante.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorAsignacion':
-                print_r('<script src="view/js/administrador/asignacion.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorGrado':
-                print_r('<script src="view/js/administrador/grado.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorSeccion':
-                print_r('<script src="view/js/administrador/seccion.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorNivel':
-                print_r('<script src="view/js/administrador/nivel.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorPeriodo':
-                print_r('<script src="view/js/administrador/periodo.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorArea':
-                print_r('<script src="view/js/administrador/area.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorCurso':
-                print_r('<script src="view/js/administrador/curso.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-            case 'administradorDireccion':
-            case 'administradorTutor':
-            case 'administradorPadre':
-                print_r('<script src="view/js/administrador/user.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorProceso':
-                print_r('<script src="view/js/administrador/proceso.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorItem':
-                print_r('<script src="view/js/administrador/item.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'direccionLogin':
-                print_r('<script src="view/js/director/login.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorLogin':
-                print_r('<script src="view/js/administrador/login.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorAnio':
-                print_r('<script src="view/js/administrador/anio.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorDocente':
-            case 'administradorDatos':
-            case 'administradorMensaje':
-            case 'administradorPersonal':
-                print_r('<script src="view/js/administrador/personal.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'padreLogin':
-                print_r('<script src="view/js/padre/login.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/padre/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorHorario':
-                print_r('<script src="view/js/administrador/horario.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'direccionHorario':
-                print_r('<script src="view/js/director/horario.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/director/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'tutorSemanaEta':
-                print_r('<script src="view/js/tutor/semana.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/tutor/profile.js" type="text/javascript"></script>');
-                break;
-
-            case 'administradorSemanaEta':
-                print_r('<script src="view/js/administrador/semana.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-                break;
-            case 'administradorPreguntaEta':
-                print_r('<script src="view/js/administrador/pregunta.js" type="text/javascript"></script>');
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorCalificacion':
-                print_r('<script src="view/js/administrador/registroEta.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorEvento':
-                print_r('<script src="view/js/administrador/evento.js" type="text/javascript"></script>');
-            break;
-
-            case 'administradorPerfil':
-                print_r('<script src="view/js/administrador/profile.js" type="text/javascript"></script>');
-            break;
-
-            default:
-                print_r('<script src="view/js/director/login.js" type="text/javascript"></script>');
-                break;
-        }
-    ?>
-
+	<?php 
+	    $enlace = isset($_REQUEST['s']) ? $_REQUEST['s'] : '';
+		print_r(JsBase::enlacesJs($enlace));
+	?>
 
     <!--end::Page Vendors -->
 
-
     <!--begin::Page Snippets -->
-    <script src="assets/custom/fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-    <script src="assets/custom/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <script src="assets/vendors/custom/fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+    <script src="assets/vendors/custom/bootbox/bootbox.min.js" type="text/javascript"></script>
     <!--end::Page Snippets -->
 
     <script type="text/javascript">
@@ -356,10 +169,10 @@
         });
 
         <?php if($_REQUEST['token'] == 'singOut'){ ?>
-            var mesagge = "<?php sistema::imprimir($_SESSION['user'][2]." ".$_SESSION['user'][3]."".$_SESSION['user'][4]); ?>";
+            var mesagge = "<?php Sistema::imprimir($_SESSION['user'][2]." ".$_SESSION['user'][3]."".$_SESSION['user'][4]); ?>";
             js_sistema.showErrorMsg(mesagge + ", HASTA PRONTO",'success');
 
-            var valor = <?php sistema::imprimir($_SESSION["modulo"][0]) ?>;
+            var valor = <?php Sistema::imprimir($_SESSION["modulo"][0]) ?>;
 
             switch(valor){
                 case 1:

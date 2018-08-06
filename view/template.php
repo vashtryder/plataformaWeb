@@ -1,5 +1,5 @@
 <?php
 	include 'html/cabecera.html.php';
-	CargarFuncion::enlaceController();
+	Sistema::enlaceController();
     include 'html/pie.html.php';
  ?>

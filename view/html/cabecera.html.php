@@ -39,7 +39,7 @@
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
 
-    <body  class="m-page--fluid m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
     <!-- begin::Page loader -->
     <div class="m-page-loader m-page-loader--base">
         <div class="m-blockui">
@@ -54,7 +54,8 @@
     <!-- end::Page Loader -->
 
 <?php
-    switch ($_SESSION['tutor']['grado']) {
+	$variable = isset($_SESSION['tutor']['grado']) ? $_SESSION['tutor']['grado'] : '';
+    switch ($variable) {
         case 1 : case 2: case 3:
             define ('ETA', 1);
             define ('ETA_TABLA', 'tb_eta_calificacion1');
