@@ -7,7 +7,7 @@
         {
             $resultSet = array();
 			$query=MySQL::connectDB()->query($consulta);
-			if($query == false){
+			if($query == true){
 				while ($row = $query->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $rows) {
 						$resultSet[] = $rows;
@@ -37,7 +37,7 @@
         {
             MySQL::connectDB()->query("START TRANSACTION");
             $query = MySQL::connectDB()->query($consulta);
-            if($query !== false){
+            if($query !== true){
                 MySQL::connectDB()->query("COMMIT");
                 return $query;
             }else{
