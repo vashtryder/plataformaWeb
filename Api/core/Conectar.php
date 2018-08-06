@@ -1,9 +1,4 @@
 <?php 
-	namespace Api\Core;
-
-	use Api\Config\Database;
-	use Api\Core\FluentPDO\FluentPDO;
-
 	class Conectar{
 		private $driver;
 		private $host, $user, $pass, $database, $charset;

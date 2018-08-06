@@ -1,74 +1,79 @@
 <?php 
-	class EntidadBase{
-		private $table;
-		private $db;
-		private $conectar;
-	
-		public function __construct($table, $adapter) {
-			$this->table=(string) $table;
-	
-			/*
-			require_once 'Conectar.php';
-			$this->conectar=new Conectar();
-			$this->db=$this->conectar->conexion();
-			 */
-			$this->conectar = null;
-			$this->db = $adapter;
+	class EntidadBase extends Conectar{
+		public function __construct() {
 		}
 	
-		public function getConetar(){
-			return $this->conectar;
-		}
-	
-		public function db(){
-			return $this->db;
-		}
-	
-		public function getAll(){
-			$query=$this->db->query("SELECT * FROM $this->table ORDER BY id DESC");
-	
-			while ($row = $query->fetch_object()) {
-			   $resultSet[]=$row;
+		public static function consultaForech($consulta='')
+        {
+            $resultSet = array();
+			$query=Conectar::conexion()->query($consulta);
+			if($query == false){
+				while ($row = $query->fetch_array(MYSQLI_NUM)) {
+					foreach ($row as $rows) {
+						$resultSet[] = $rows;
+					}
+				}
+			} else{
+				$resultSet[] = null;
 			}
-	
 			return $resultSet;
-		}
-	
-		public function getById($id){
-			$query=$this->db->query("SELECT * FROM $this->table WHERE id=$id");
-	
-			if($row = $query->fetch_object()) {
-			   $resultSet=$row;
+        }
+
+        public static function consultaArray($consulta='')
+        {
+            $resultSet = array();
+            $query = Conectar::conexion()->query($consulta);
+			if ($query == true) {
+				while ($row = $query->fetch_array(MYSQLI_NUM)) {
+					$resultSet[] = $row;
+				}
+			} else{
+				$resultSet[] = null;
+			}	
+			return $resultSet;
+        }
+
+        public static function consulta($consulta='')
+        {
+            Conectar::conexion()->query("START TRANSACTION");
+            $query = Conectar::conexion()->query($consulta);
+            if($query !== false){
+                Conectar::conexion()->query("COMMIT");
+                return $query;
+            }else{
+                Conectar::conexion()->query("ROLLBACK");
+                return $query;
+            }
+        }
+
+        public static function consultaProcedure($consulta='')
+        {
+            $query = Conectar::conexion()->query($consulta);
+			if ($query == true) {
+				return $query;
+			} else {
+				return $query;
 			}
-	
-			return $resultSet;
-		}
-	
-		public function getBy($column,$value){
-			$query=$this->db->query("SELECT * FROM $this->table WHERE $column='$value'");
-	
-			while($row = $query->fetch_object()) {
-			   $resultSet[]=$row;
+        }
+
+        public static function real_escape_string($consulta='')
+        {
+			$query = Conectar::conexion()->real_escape_string($consulta);
+			if($query == true){
+				return $query
+			} else{
+				return false;
 			}
-	
-			return $resultSet;
-		}
-	
-		public function deleteById($id){
-			$query=$this->db->query("DELETE FROM $this->table WHERE id=$id");
-			return $query;
-		}
-	
-		public function deleteBy($column,$value){
-			$query=$this->db->query("DELETE FROM $this->table WHERE $column='$value'");
-			return $query;
-		}
-	
-	
-		/*
-		 * Aqui podemos montarnos un monton de métodos que nos ayuden
-		 * a hacer operaciones con la base de datos de la entidad
-		 */
+        }
+
+        public static function consultaFields($consulta='')
+        {
+            if ($query = Conectar::conexion()->query($consulta)) {
+                return $query->field_count;
+            } else{
+				return false;
+			}
+        }
 	
 	}
 	

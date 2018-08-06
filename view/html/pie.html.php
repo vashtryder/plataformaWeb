@@ -168,11 +168,15 @@
             $('body').removeClass('m-page--loading');
         });
 
-        <?php if($_REQUEST['token'] == 'singOut'){ ?>
-            var mesagge = "<?php Sistema::imprimir($_SESSION['user'][2]." ".$_SESSION['user'][3]."".$_SESSION['user'][4]); ?>";
-            js_sistema.showErrorMsg(mesagge + ", HASTA PRONTO",'success');
 
-            var valor = <?php Sistema::imprimir($_SESSION["modulo"][0]) ?>;
+		<?php 
+			$token = isset($_REQUEST['token']) ? $_REQUEST['token'] : '';
+
+			if($token == 'singOut'){ ?>
+            	var mesagge = "<?php Sistema::imprimir($_SESSION['user'][2]." ".$_SESSION['user'][3]."".$_SESSION['user'][4]); ?>";
+            	js_sistema.showErrorMsg(mesagge + ", HASTA PRONTO",'success');
+
+            	var valor = <?php Sistema::imprimir($_SESSION["modulo"][0]) ?>;
 
             switch(valor){
                 case 1:
