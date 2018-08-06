@@ -4,5 +4,8 @@
 	require_once 'Api/config/jsbase.php';
 	require_once 'Api/core/ControladorBase.php';
 	require_once 'controller/template.php';
+	
+	MySQL::connectDB();
+
 	plantillaController::plantilla();
 ?>
