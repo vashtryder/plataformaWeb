@@ -2,7 +2,7 @@
 	
 	include_once "Api/core/ControladorBase.php";
 	
-	class registroEtaGestor
+	class GestorRegistroEta
     {
 	   
 		public static function newRegistroEtaAjax()
@@ -38,8 +38,8 @@
 
                 $data = $data1 = array();
 
-                $idCalificacion = gestorRegistroEta::id_eta_calificacion($ETA_TABLA);
-                $idRegistroEta  = gestorRegistroEta::id_eta_registro();
+				$idCalificacion = calificacionEtaController::getCalificacionEtaId($ETA_TABLA);
+                $idRegistroEta  = registroEtaController::getRegistroEtaId();
 
                 $idCalificacion = empty($idCalificacion[0]) ? 0 : $idCalificacion[0];
                 $idEta          = empty($idRegistroEta[0]) ? 0: $idRegistroEta[0];
@@ -57,7 +57,7 @@
                 array_push($data,$_REQUEST['tabla']);
                 array_push($data,$ETA_TABLA);
 
-                gestorRegistroEta::new_eta_calificar($data,$SP_TABLA);
+				calificacionEtaController::getCalificacionEtaNew($data,$SP_TABLA);
 
                 array_push($data1,$idEta);
                 array_push($data1,$_REQUEST['colegio']);
@@ -68,14 +68,14 @@
                 array_push($data1,'REGISTRO_ETA_'.$_REQUEST['grado'].'_'.$value.'_'.$_REQUEST['nivel'].'_SEMANA_'.$_REQUEST['semana']);
                 array_push($data1,date('Y-m-d'));
 
-                gestorRegistroEta::new_eta_registro($data1);
+				registroEtaController::getRegistroEtaNew($data1);
 
             }
 
             $data2 = array();
             array_push($data2,'calificaciones');
             array_push($data2,$_REQUEST['tabla']);
-            return gestorRegistroEta::delete_eta_calificar($data2);
+			return registroEtaController::getRegistroEtaDelete($data2);
 		}
 		
 		public static function deleteRegistroEtaAjax()
@@ -83,20 +83,15 @@
             $data2 = array();
             array_push($data2,'calificaciones');
             array_push($data2,$_REQUEST['tabla']);
-            return gestorRegistroEta::delete_eta_calificar($data2);
+            return registroEtaController::getRegistroEtaDelete($data2);
         }
     }
 
     if(isset($_REQUEST["new_registro"])){
-        GestorUsuarioModel::newRegistroEtaAjax();
-    }
-
-    if(isset($_REQUEST["delete_registro"])){
-        GestorUsuarioModel::deleteRegistroEtaAjax();
-    }
-
-
-    if(isset($_REQUEST["avatar_token"])){
-        GestorUsuarioModel::updateDocenteAjax();
+        GestorRegistroEta::newRegistroEtaAjax();
+    } else if(isset($_REQUEST["delete_registro"])){
+        GestorRegistroEta::deleteRegistroEtaAjax();
+    }else if(isset($_REQUEST["avatar_token"])){
+        GestorRegistroEta::updateDocenteAjax();
     }
 ?>

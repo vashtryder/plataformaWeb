@@ -2,14 +2,13 @@
 	
 	include_once "Api/core/ControladorBase.php";
 	
-	class adminGestor
+	class GestorAdmin
     {
-		
         public static function loginAdministradorAjax(){
 
             $data = array( $_REQUEST['userID'] , $_REQUEST['passID'] );
 
-            $row_login = gestorUsuario::get_administrador_login($data);
+            $row_login = adminController::getAdministradorLogin($data);
 
             list($idModuloLogin, $idPersonal, $idModulo, $USER, $PASS, $activo ) = $row_login;
 
@@ -17,9 +16,9 @@
 
                 if($activo != 0){
 
-                    $r_m = gestorModulo::set_modulo($idModulo);
-                    $r_p = gestorPersonal::set_administrador($idPersonal);
-                    $r_a = gestorAnio::set_anioAcademico(date('Y'));
+                    $r_m = moduloController::setModulo($idModulo);
+                    $r_p = adminController::setAdministrador($idPersonal);
+                    $r_a = anioController::setAnioAcademico(date('Y'));
 
                     $_SESSION['login'][0]  = $idModuloLogin; #-- idLogin
                     $_SESSION['login'][1]  = $USER; #-- Usuario
@@ -41,14 +40,14 @@
                     $_SESSION['user'][8]   = $r_p[6] ; #celular
                     $_SESSION['user'][9]   = $r_p[9] ; #avatar
 
-                    sistema::imprimir("administradorPerfil");
+                    Sistema::imprimir("administradorPerfil");
 
                 } else {
-                   sistema::imprimir(1);
+                   Sistema::imprimir(1);
                 }
 
             } else{
-                sistema::imprimir(2);
+                Sistema::imprimir(2);
             }
         }
 		
@@ -71,7 +70,7 @@
             $_SESSION["user"][7] = $_REQUEST["celular1"];
             $_SESSION["user"][8] = $_REQUEST["celular2"];
 
-            return adminModel::update_administrador($data);
+            return adminController::getAdministradorUpdate($data);
         }
 
         public static function passwordAdministradorAjax()
@@ -79,7 +78,7 @@
             $data = array();
             array_push($data,$_REQUEST["password"]);
             array_push($data,$_REQUEST["id"]);
-            return adminModel::password_administrador($data);
+            return adminController::getAdministradorPassword($data);
 		}
 		
         public static function avatarAdministradorAjax()
@@ -87,18 +86,18 @@
             $data = array();
             array_push($data, $_FILES['foto']);
             array_push($data, $_POST['id']);
-            return adminModel::avatar_administrador($data);
+            return adminController::getAdministradorAvatar($data);
         }
 	}
 
 	if(isset($_REQUEST["token"])){
-        GestorUsuarioModel::loginAdministradorAjax();
+        GestorAdmin::loginAdministradorAjax();
     } else if(isset($_REQUEST['password_token'])){
-        GestorUsuarioModel::passwordAdministradorAjax();
+        GestorAdmin::passwordAdministradorAjax();
     } else if(isset($_REQUEST["update_token"])){
-        GestorUsuarioModel::updateAdministradorAjax();
+        GestorAdmin::updateAdministradorAjax();
 	} else if(isset($_REQUEST["avatar_token"])){
-        GestorUsuarioModel::avatarAdministradorAjax();
+        GestorAdmin::avatarAdministradorAjax();
     }
 
 ?>

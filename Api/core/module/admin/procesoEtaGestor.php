@@ -1,16 +1,16 @@
 <?php 
 	include_once "Api/core/ControladorBase.php";
 	
-	class procesoEtaGestor
+	class GestorProcesoEta
     {
 		public static function newProcesoAjax()
         {
-            $row = gestorProceso::get_id_proceso();
+            $row = procesoETaController::getProcesoEtaId();
             $data = array();
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['nombre']);
             array_push($data, 0);
-            return gestorProceso::new_proceso($data);
+            return procesoETaController::getProcesoEtaNew($data);
         }
 
         public static function updateProcesoAjax()
@@ -19,21 +19,21 @@
             array_push($data, $_REQUEST['nombre']);
             array_push($data, 0);
             array_push($data, $_REQUEST['id']);
-            return gestorProceso::update_proceso($data);
+            return procesoETaController::getProcesoEtaUpdate($data);
         }
 
         public static function deleteProcesoAjax()
         {
-            return gestorProceso::delete_proceso($_REQUEST['id']);
+			return procesoETaController::getProcesoEtaDelete($_REQUEST['id']);
         }
 
 	}
 
 	if(isset($_REQUEST["new_proceso"])){
-        GestorUsuarioModel::newProcesoAjax();
+        GestorProcesoEta::newProcesoAjax();
     } else if(isset($_REQUEST["update_proceso"])){
-        GestorUsuarioModel::updateProcesoAjax();
+        GestorProcesoEta::updateProcesoAjax();
     } else if(isset($_REQUEST["delete_proceso"])){
-        GestorUsuarioModel::deleteProcesoAjax();
+        GestorProcesoEta::deleteProcesoAjax();
     }
 ?>

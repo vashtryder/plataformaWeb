@@ -1,18 +1,18 @@
 <?php 
 	include_once "Api/core/ControladorBase.php";
 
-	class preguntaEtaGestor
+	class GestorPreguntaEta
 	{
 		public static function newPreguntaAjax()
         {
-            $row = gestorPregunta::get_id_pregunta();
+            $row = preguntaEtaController::getPreguntaEtaId();
             $data = array();
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['idanio']);
             array_push($data, $_REQUEST['curso']);
             array_push($data, $_REQUEST['eta']);
             array_push($data, $_REQUEST['cantidad']);
-            return gestorPregunta::new_pregunta($data);
+            return preguntaEtaController::getPreguntaEtaNew($data);
         }
 
         public static function updatePreguntaAjax()
@@ -22,20 +22,20 @@
             array_push($data, $_REQUEST['eta']);
             array_push($data, $_REQUEST['cantidad']);
             array_push($data, $_REQUEST['id']);
-            return gestorPregunta::update_pregunta($data);
+            return preguntaEtaController::getPreguntaEtaUpdate($data);
         }
 
         public static function deletePreguntaAjax()
         {
-            return gestorPregunta::delete_pregunta($_REQUEST['id']);
+			return preguntaEtaController::getPreguntaEtaDelete($_REQUEST['id']);
         }
 	}
 
 	if(isset($_REQUEST["new_pregunta"])){
-        GestorUsuarioModel::newPreguntaAjax();
+        GestorPreguntaEta::newPreguntaAjax();
     } else if(isset($_REQUEST["update_pregunta"])){
-        GestorUsuarioModel::updatePreguntaAjax();
+        GestorPreguntaEta::updatePreguntaAjax();
     } else if(isset($_REQUEST["delete_pregunta"])){
-        GestorUsuarioModel::deletePreguntaAjax();
+        GestorPreguntaEta::deletePreguntaAjax();
     }
 ?>

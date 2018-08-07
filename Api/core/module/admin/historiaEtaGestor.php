@@ -1,7 +1,7 @@
 <?php 
 	include_once "Api/core/ControladorBase.php";
 
-	class historiaEtaGestor
+	class GestorHistoriaEta
 	{
 		public static function newHistoriaAjax()
         {
@@ -20,7 +20,7 @@
             array_push($data,$_REQUEST['title']);
             array_push($data,$start);
             array_push($data,$end);
-            return gestorhistoria::new_historia($data);
+            return historiaEtaController::getHistoriaEtaNew($data);
         }
 
         public static function updateHistoriaAjax()
@@ -41,7 +41,9 @@
                 array_push($data,$_REQUEST['title']);
                 array_push($data,$start);
                 array_push($data,$end);
-                array_push($data,$_REQUEST['id']);
+				array_push($data,$_REQUEST['id']);
+				
+				return historiaEtaController::getHistoriaEtaUpdate($data);
 
             } else {
 
@@ -54,26 +56,27 @@
                     $end   = $_REQUEST['end'];
                 }
 
-                array_push($data,$_REQUEST['title']);
+				array_push($data,$_REQUEST['title']);
+				array_push($data,$_REQUEST['description']);
                 array_push($data,$start);
                 array_push($data,$end);
-                array_push($data,$_REQUEST['id']);
+				array_push($data,$_REQUEST['id']);
+				
+				return historiaEtaController::getHistoriaEtaUpdateSimple($data);
             }
-
-            return gestorhistoria::update_historia($data);
         }
 
         public static function deleteHistoriaAjax()
         {
-            return gestorhistoria::delete_historia($_REQUEST['id']);
+			return historiaEtaController::getHistoriaEtaDelete($_REQUEST['id']);
         }  
 	}
 
 	if(isset($_REQUEST["new_historia"])){
-		GestorUsuarioModel::newHistoriaAjax();
+		GestorHistoriaEta::newHistoriaAjax();
     } else if(isset($_REQUEST["update_historia"])){
-        GestorUsuarioModel::updateHistoriaAjax();
+        GestorHistoriaEta::updateHistoriaAjax();
     } else if(isset($_REQUEST["delete_historia"])){
-        GestorUsuarioModel::deleteHistoriaAjax();
+        GestorHistoriaEta::deleteHistoriaAjax();
     }
 ?>

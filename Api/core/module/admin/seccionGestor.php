@@ -2,16 +2,16 @@
 
 	include_once "Api/core/ControladorBase.php";
 
-	class seccionGestor
+	class GestorSeccion
 	{
 		public static function newSeccionAjax()
         {
-            $row = gestorSeccion::get_id_seccion();
+            $row = seccionController::getSeccionId();
             $data = array();
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['seccion']);
             array_push($data, sistema::substr($_REQUEST['seccion'],3));
-            return gestorSeccion::new_seccion($data);
+            return seccionController::getSeccionNew($data);
         }
 
         public static function updateSeccionAjax()
@@ -19,20 +19,20 @@
             $data = array();
             array_push($data, $_REQUEST['seccion']);
             array_push($data, $_REQUEST['id']);
-            return gestorSeccion::update_seccion($data);
+            return seccionController::getSeccionUpdate($data);
         }
 
         public static function deleteSeccionAjax()
         {
-            return gestorSeccion::delete_seccion($_REQUEST['id']);
+			return seccionController::getSeccionDeleteModel($_REQUEST['id']);
 		}
 	}
 
 	if(isset($_REQUEST["new_seccion"])){
-		GestorUsuarioModel::newSeccionAjax();
+		GestorSeccion::newSeccionAjax();
 	} else if(isset($_REQUEST["update_seccion"])){
-		GestorUsuarioModel::updateSeccionAjax();
+		GestorSeccion::updateSeccionAjax();
 	} else if(isset($_REQUEST["delete_seccion"])){
-		GestorUsuarioModel::deleteSeccionAjax();
+		GestorSeccion::deleteSeccionAjax();
 	}
 ?>

@@ -2,11 +2,11 @@
 
 	include_once "Api/core/ControladorBase.php";
 
-	class colegioGestor
+	class GestorColegio
 	{
 		public static function newColegioAjax()
         {
-            $row = gestorColegio::get_id_colegio();
+            $row = colegioController::getColegioId();
             $data = array();
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['nombre']);
@@ -18,7 +18,7 @@
             array_push($data, $_REQUEST['facebook']);
             array_push($data, $_REQUEST['youtube']);
             array_push($data, $_REQUEST['correo']);
-            return gestorColegio::new_colegio($data);
+            return colegioController::getColegioNew($data);
         }
 
         public static function updateColegioAjax()
@@ -34,20 +34,20 @@
             array_push($data, $_REQUEST['youtube']);
             array_push($data, $_REQUEST['correo']);
             array_push($data, $_REQUEST['id']);
-            return gestorColegio::update_colegio($data);
+            return colegioController::getColegioUpdate($data);
         }
 
         public static function deleteColegioAjax()
         {
-            return gestorColegio::delete_colegio($_REQUEST['id']);
+			return colegioController::getColegioDelete($_REQUEST['id']);
 		}
 	}
 
 	if(isset($_REQUEST["new_colegio"])){
-        GestorUsuarioModel::newColegioAjax();
+        GestorColegio::newColegioAjax();
     } else if(isset($_REQUEST["update_colegio"])){
-        GestorUsuarioModel::updateColegioAjax();
+        GestorColegio::updateColegioAjax();
     } else if(isset($_REQUEST["delete_colegio"])){
-        GestorUsuarioModel::deleteColegioAjax();
+        GestorColegio::deleteColegioAjax();
     }
 ?>

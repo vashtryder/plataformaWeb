@@ -2,11 +2,11 @@
 
 	include_once "Api/core/ControladorBase.php";
 
-	class semanaEtaGestor
+	class GestorSemanaEta
 	{
 		public static function newSemanaAjax()
         {
-            $row = gestorSemana::get_id_semana();
+            $row = semanaEtaController::getSemanaEtaId();
             $data = array();
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['unidad']);
@@ -14,7 +14,7 @@
             array_push($data, $_REQUEST['nombre']);
             array_push($data, $_REQUEST['fechaini']);
             array_push($data, $_REQUEST['fechafin']);
-            return gestorSemana::new_semana($data);
+            return semanaEtaController::getSemanaEtaNew($data);
         }
 
         public static function updateSemanaAjax()
@@ -25,20 +25,20 @@
             array_push($data, $_REQUEST['fechaini']);
             array_push($data, $_REQUEST['fechafin']);
             array_push($data, $_REQUEST['id']);
-            return gestorSemana::update_semana($data);
+            return semanaEtaController::getSemanaEtaUpdate($data);
         }
 
         public static function deleteSemanaAjax()
         {
-            return gestorSemana::delete_semana($_REQUEST['id']);
+            return semanaEtaController::getSemanaEtaDelete($data);
 		}
 	}
 
 	if(isset($_REQUEST["new_semana"])){
-		GestorUsuarioModel::newSemanaAjax();
+		GestorSemanaEta::newSemanaAjax();
 	} else if(isset($_REQUEST["update_semana"])){
-		GestorUsuarioModel::updateSemanaAjax();
+		GestorSemanaEta::updateSemanaAjax();
 	} else if(isset($_REQUEST["delete_semana"])){
-		GestorUsuarioModel::deleteSemanaAjax();
+		GestorSemanaEta::deleteSemanaAjax();
 	}
 ?>
