@@ -6,7 +6,7 @@
 		}
 
 		public static function setGrado($data){
-			return gradoModel::setGradoModel($data)
+			return gradoModel::setGradoModel($data);
 		}
 
 		public static function getGradoId(){

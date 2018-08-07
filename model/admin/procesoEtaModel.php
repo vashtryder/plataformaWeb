@@ -1,6 +1,5 @@
-procesoETaModel
 <?php
-	class procesoETaModel extends EntidadBase
+	class procesoEtaModel extends EntidadBase
 	{
 		private static $table = 'tb_administrador_proceso';
 

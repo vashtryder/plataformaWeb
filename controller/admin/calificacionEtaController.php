@@ -2,7 +2,7 @@
 	class calificacionEtaController extends calificacionEtaModel
 	{
 		public static function getCalificacionEtaId($tabla){
-			return calificacionEtaModel::getCalificacionEtaIdModel($tabla)
+			return calificacionEtaModel::getCalificacionEtaIdModel($tabla);
 		}
 
 		public static function getCalificacionEtaNew($data,$sp_procedure){

@@ -1,3 +1,3 @@
 <?php
-    include ROOT_HTML_ADMINISTRADOR.'administradorLogin.html.php';
+    include ROOT_HTML_ADMIN.'administradorLogin.html.php';
 ?>

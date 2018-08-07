@@ -1,4 +1,4 @@
 <?php
-    include ROOT_HTML_ADMINISTRADOR.'administradorMenu.html.php';
-    include ROOT_HTML_ADMINISTRADOR.'administradorRespuesta.html.php';
+    include ROOT_HTML_ADMIN.'administradorMenu.html.php';
+    include ROOT_HTML_ADMIN.'administradorRespuesta.html.php';
 ?>

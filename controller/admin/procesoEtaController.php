@@ -1,24 +1,24 @@
 <?php
-	class procesoETaController extends procesoETaModel
+	class procesoEtaController extends procesoEtaModel
 	{
 		public static function getProcesoEta(){
-			return procesoETaModel::getProcesoEtaModel();
+			return procesoEtaModel::getProcesoEtaModel();
 		}
 
 		public static function setProcesoEta($data){
-			return procesoETaModel::setProcesoEtaModel($data);
+			return procesoEtaModel::setProcesoEtaModel($data);
 		}
 
 		public static function getProcesoEtaId(){
-			return procesoETaModel::getProcesoEtaIdModel();
+			return procesoEtaModel::getProcesoEtaIdModel();
 		}
 
 		public static function getProcesoEtaNew($data){
-			return procesoETaModel::getProcesoEtaNewModel($data);
+			return procesoEtaModel::getProcesoEtaNewModel($data);
 		}
 
 		public static function getProcesoEtaUpdate($data){
-			return procesoETaModel::getProcesoEtaUpdateModel($data);
+			return procesoEtaModel::getProcesoEtaUpdateModel($data);
 		}
 
 		public static function getProcesoEtaDelete($data){

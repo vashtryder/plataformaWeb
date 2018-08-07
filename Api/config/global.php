@@ -21,7 +21,7 @@
 
 	$scanned_directory = array_diff(scandir($root_json), array('..', '.','*.php'));
     foreach ($scanned_directory as $key => $value) {
-        $variable_global = 'ROOT_'.mb_strtoupper($value,'UTF-8');
+        $variable_global = 'ROOT_JSON_'.mb_strtoupper($value,'UTF-8');
 		define($variable_global, $root_json.$value.'/' );
 		// print_r($variable_global.'<br>');
 	}

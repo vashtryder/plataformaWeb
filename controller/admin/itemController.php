@@ -11,7 +11,7 @@
 		}
 
 		public static function setItem($data){
-			return itemModel::setItemModel($data)
+			return itemModel::setItemModel($data);
 		}
 
 		public static function getItemId(){

@@ -5,12 +5,12 @@
     {
 		public static function newProcesoAjax()
         {
-            $row = procesoETaController::getProcesoEtaId();
+            $row = procesoEtaController::getProcesoEtaId();
             $data = array();
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['nombre']);
             array_push($data, 0);
-            return procesoETaController::getProcesoEtaNew($data);
+            return procesoEtaController::getProcesoEtaNew($data);
         }
 
         public static function updateProcesoAjax()
@@ -19,12 +19,12 @@
             array_push($data, $_REQUEST['nombre']);
             array_push($data, 0);
             array_push($data, $_REQUEST['id']);
-            return procesoETaController::getProcesoEtaUpdate($data);
+            return procesoEtaController::getProcesoEtaUpdate($data);
         }
 
         public static function deleteProcesoAjax()
         {
-			return procesoETaController::getProcesoEtaDelete($_REQUEST['id']);
+			return procesoEtaController::getProcesoEtaDelete($_REQUEST['id']);
         }
 
 	}
