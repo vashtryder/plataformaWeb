@@ -1,5 +1,8 @@
 <?php
-	require_once 'Api/config/database.php';
+
+	$strFileRoot = glob($_SERVER["DOCUMENT_ROOT"]."/plataformaWeb/*");
+	require_once $strFileRoot[0] ."/config/database.php";
+	
     class MySQL{
         public static function connectDB(){
 			$db_cfg = Database::getDataConextion();

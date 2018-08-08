@@ -5,7 +5,7 @@
 			return adminModel::getAdministradorModel();
 		}
 
-		public static function setAdministrador(){
+		public static function setAdministrador($data){
 			return adminModel::setAdministradorModel($data);
 		}
 
@@ -29,5 +29,4 @@
 			return adminModel::getAdministradorAvatarModel($data);
 		}
 	}
-	
 ?>

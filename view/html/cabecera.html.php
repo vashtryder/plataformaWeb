@@ -30,27 +30,33 @@
         <link href="assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendors -->
 
-		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/base/style.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="assets/base/style.responsive.css" rel="stylesheet" type="text/css" />
+		<!--begin::Page Vendors Styles -->
+		<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		
+		<!--RTL version:<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 
-        <link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors Styles -->
+
+		<!--begin::Base Styles -->
+		<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" /><!--RTL version:<link href="assets/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+		<link href="assets/base/style.bundle.css" rel="stylesheet" type="text/css" /><!--RTL version:<link href="assets/demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+
+		<!--end::Base Styles -->
+
 		<!--end::Base Styles -->
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
 
-<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
-    <!-- begin::Page loader -->
-    <div class="m-page-loader m-page-loader--base">
+    <body  class="m--skin- m-page--loading-enabled m-page--loading m-content--skin-light m-header--fixed m-header--fixed-mobile m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default"  >
+	
+	 <!-- begin::Page loader -->
+	 <div class="m-page-loader m-page-loader--base">
         <div class="m-blockui">
-            <span>
-                Por favor espere...
-            </span>
-            <span>
-                <div class="m-loader m-loader--brand"></div>
-            </span>
+            <span>Cargando...</span>
+            <span><div class="m-loader m-loader--brand"></div></span>
         </div>
     </div>
+
     <!-- end::Page Loader -->
 
 <?php

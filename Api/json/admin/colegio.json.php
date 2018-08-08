@@ -1,7 +1,6 @@
 <?php
-    include('../../../conf.ini.php');
-
-    $rs = gestorColegio::get_colegio();
+    include_once "../../core/ControladorBase.php";
+	$rs = colegioController::getColegio();
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(
@@ -9,5 +8,5 @@
             'text' => $row[1]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

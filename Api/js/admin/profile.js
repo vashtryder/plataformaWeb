@@ -1,7 +1,7 @@
-var js_profile = function(){
+var js_profile = function() {
 
     var dataRecibido = $('.m_regMensajeRecibido');
-    var dataEnviado  = $('.m_regMensajeRecibido');
+    var dataEnviado = $('.m_regMensajeRecibido');
 
     var datatableJsonMensaje = function() {
         if ($('.m_regMensajeRecibido').length > 0) {
@@ -35,7 +35,7 @@ var js_profile = function(){
                     type: 'remote',
                     source: {
                         read: {
-                            url: 'view/module/administrador/administradorMensajeRecibidoTabla.php'
+                            url: 'view/modal/admin/administradorMensajeRecibidoTabla.php'
                         },
                     },
                 },
@@ -59,57 +59,58 @@ var js_profile = function(){
 
                 // columns definition
                 columns: [{
-                    field: 'id',
-                    title: "#",
-                    responsive: {visible: 'lg'},
-                    sortable: 'desc',
-                    width: 50,
-                    textAlign: 'center'
-                },
-                {
-                    field: 'para',
-                    title: "PARA",
-                    width: 150,
-                    textAlign: 'center'
-                },{
-                    field: 'asunto',
-                    title: "ASUNTO",
-                    width: 150,
-                    textAlign: 'center'
-                },{
-                    field: 'fecha',
-                    title: "ENVIADO",
-                    width: 150,
-                    textAlign: 'center'
-                },{
-                    field: 'status',
-                    title: "ESTADO",
-                    // width: 50,
-                    textAlign: 'center',
-                    template: function (row, index, datatable) {
-                        var status = {
-                            0: {'title': 'Sin Leer', 'class': 'm-badge--danger'},
-                            1: {'title': 'Leido', 'class': 'm-badge--success'},
-                        };
+                        field: 'id',
+                        title: "#",
+                        responsive: { visible: 'lg' },
+                        sortable: 'desc',
+                        width: 50,
+                        textAlign: 'center'
+                    },
+                    {
+                        field: 'para',
+                        title: "PARA",
+                        width: 150,
+                        textAlign: 'center'
+                    }, {
+                        field: 'asunto',
+                        title: "ASUNTO",
+                        width: 150,
+                        textAlign: 'center'
+                    }, {
+                        field: 'fecha',
+                        title: "ENVIADO",
+                        width: 150,
+                        textAlign: 'center'
+                    }, {
+                        field: 'status',
+                        title: "ESTADO",
+                        // width: 50,
+                        textAlign: 'center',
+                        template: function(row, index, datatable) {
+                            var status = {
+                                0: { 'title': 'Sin Leer', 'class': 'm-badge--danger' },
+                                1: { 'title': 'Leido', 'class': 'm-badge--success' },
+                            };
 
-                        return '<span class="m-badge '+ status[row.status].class +' m-badge--wide">'+ status[row.status].title +'</span>';
-                    }
-                },{
-                    field: "Acciones",
-                    width: 100,
-                    sortable: false,
-                    title: "Acciones",
-                    overflow: 'visible',
-                    template: function (row, index, datatable) {
-                        return '<a onclick="js_profile.modalMensajViewsubmit('+ row.id +')" class="btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill" title="Ver Mensaje">\
+                            return '<span class="m-badge ' + status[row.status].class + ' m-badge--wide">' + status[row.status].title + '</span>';
+                        }
+                    }, {
+                        field: "Acciones",
+                        width: 100,
+                        sortable: false,
+                        title: "Acciones",
+                        overflow: 'visible',
+                        template: function(row, index, datatable) {
+                            return '<a onclick="js_profile.modalMensajViewsubmit(' + row.id + ')" class="btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill" title="Ver Mensaje">\
                                     <i class="fa fa-envelope-open-o"></i>\
                                 </a>\
-                                <a onclick="js_profile.modalMensajeDeleteSubmit('+ row.id +')" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Eliminar">\
+                                <a onclick="js_profile.modalMensajeDeleteSubmit(' + row.id + ')" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Eliminar">\
                                     <i class="fa fa-trash"></i>\
                                 </a>\
                             ';
+                        }
                     }
-                }]
+                ]
             });
 
             var query = dataRecibido.getDataSourceQuery();
@@ -173,49 +174,49 @@ var js_profile = function(){
 
                 // columns definition
                 columns: [{
-                    field: 'id',
-                    title: "#",
-                    responsive: {visible: 'lg'},
-                    sortable: 'desc',
-                    width: 50,
-                    textAlign: 'center'
-                },
-                {
-                    field: 'para',
-                    title: "PARA",
-                    width: 150,
-                    textAlign: 'center'
-                },{
-                    field: 'asunto',
-                    title: "ASUNTO",
-                    width: 150,
-                    textAlign: 'center'
-                },{
-                    field: 'fecha',
-                    title: "ENVIADO",
-                    width: 150,
-                    textAlign: 'center'
-                },
-                // {
-                //     field: 'status',
-                //     title: "ESTADO",
-                //     // width: 50,
-                //     textAlign: 'center',
-                //     template: function (row, index, datatable) {
-                //         var status = {
-                //             1: {'title': 'Leido', 'class': 'm-badge--success'},
-                //             0: {'title': 'Sin Leer', 'class': 'm-badge--danger'},
-                //         };
+                        field: 'id',
+                        title: "#",
+                        responsive: { visible: 'lg' },
+                        sortable: 'desc',
+                        width: 50,
+                        textAlign: 'center'
+                    },
+                    {
+                        field: 'para',
+                        title: "PARA",
+                        width: 150,
+                        textAlign: 'center'
+                    }, {
+                        field: 'asunto',
+                        title: "ASUNTO",
+                        width: 150,
+                        textAlign: 'center'
+                    }, {
+                        field: 'fecha',
+                        title: "ENVIADO",
+                        width: 150,
+                        textAlign: 'center'
+                    },
+                    // {
+                    //     field: 'status',
+                    //     title: "ESTADO",
+                    //     // width: 50,
+                    //     textAlign: 'center',
+                    //     template: function (row, index, datatable) {
+                    //         var status = {
+                    //             1: {'title': 'Leido', 'class': 'm-badge--success'},
+                    //             0: {'title': 'Sin Leer', 'class': 'm-badge--danger'},
+                    //         };
 
-                //         return '<span class="m-badge '+ status[row.status].class +' m-badge--wide">'+ status[row.status].title +'</span>';
-                //     }
-                // }
-                // {
-                //     field: "Acciones",
-                //     width: 100,
-                //     sortable: false,
-                //     title: "Acciones",
-                //     overflow: 'visible',
+                    //         return '<span class="m-badge '+ status[row.status].class +' m-badge--wide">'+ status[row.status].title +'</span>';
+                    //     }
+                    // }
+                    // {
+                    //     field: "Acciones",
+                    //     width: 100,
+                    //     sortable: false,
+                    //     title: "Acciones",
+                    //     overflow: 'visible',
                     // template: function (row, index, datatable) {
                     //     return '<a onclick="js_profile.modalMensajViewsubmit('+ row.id +')" class="btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill" title="Ver Mensaje">\
                     //                 <i class="fa fa-envelope-open-o"></i>\
@@ -225,7 +226,7 @@ var js_profile = function(){
                     //             </a>\
                     //         ';
                     // }
-                // }
+                    // }
                 ]
             });
 
@@ -233,66 +234,66 @@ var js_profile = function(){
         }
     }
 
-    var modalMensajViewsubmit = function(id){
+    var modalMensajViewsubmit = function(id) {
 
         $('#m-MensajeRecibido').modal('show')
 
-        $.post('view/module/administrador/administradorModalMensajeUpdate.php',{id:id},function(data){
+        $.post('view/module/administrador/administradorModalMensajeUpdate.php', { id: id }, function(data) {
             $('#m_Mensaje_Recibido').html(data)
         });
 
-        var data = {id:id, update_mensaje:1}
-        $.post('view/module/administrador/administrador.php',data,function(data){
+        var data = { id: id, update_mensaje: 1 }
+        $.post('view/module/administrador/administrador.php', data, function(data) {
             dataRecibido.mDatatable('reload');
         })
 
     }
 
-    var modalMensajeDeleteSubmit = function(id){
+    var modalMensajeDeleteSubmit = function(id) {
         bootbox.dialog({
-                message: "ESTA SEGURO DE ELIMINAR",
-                buttons: {
-                    success: {
-                        label: "SI",
-                        className: "btn btn-outline-success",
-                        callback: function() {
-                            $.ajax({
-                                type:'POST',
-                                url:'view/module/administrador/administrador.php',
-                                data: {id:id, delete_mensaje: 1},
-                                dataType:"json",
-                                cache: false
-                            }).done(function(respuesta){
-                                if(respuesta[0] == 1){
-                                    js_sistema.showErrorMsg(respuesta[1],'success',4000);
-                                    datatable.mDatatable('reload');
-                                }else{
-                                    js_sistema.showErrorMsg(respuesta[1],'darger',4000);
-                                }
-                            })
-                        }
-                    },
-                    danger: {
-                        label: "NO",
-                        className: "btn btn-outline-danger",
-                        callback: function() {
+            message: "ESTA SEGURO DE ELIMINAR",
+            buttons: {
+                success: {
+                    label: "SI",
+                    className: "btn btn-outline-success",
+                    callback: function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'view/module/administrador/administrador.php',
+                            data: { id: id, delete_mensaje: 1 },
+                            dataType: "json",
+                            cache: false
+                        }).done(function(respuesta) {
+                            if (respuesta[0] == 1) {
+                                js_sistema.showErrorMsg(respuesta[1], 'success', 4000);
+                                datatable.mDatatable('reload');
+                            } else {
+                                js_sistema.showErrorMsg(respuesta[1], 'darger', 4000);
+                            }
+                        })
+                    }
+                },
+                danger: {
+                    label: "NO",
+                    className: "btn btn-outline-danger",
+                    callback: function() {
 
-                        }
                     }
                 }
-            })
+            }
+        })
     }
 
-    var modalUserUpdateSubmit = function(id){
+    var modalUserUpdateSubmit = function(id) {
         $('#m-modalDatos').modal('show');
-        $.post('view/module/administrador/administradorModalDatos.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorModalDatos.php', { id: id }, function(data) {
             $('#m_modal_datos').html(data);
         })
     }
 
-    var handleUserUpdateSubmit = function(){
+    var handleUserUpdateSubmit = function() {
 
-        $("#btn-submit-user").click(function(e){
+        $("#btn-submit-user").click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -332,7 +333,7 @@ var js_profile = function(){
                         required: "Por favor, Ingrese Apellido Paterno."
 
                     },
-                    celular1:{
+                    celular1: {
                         required: "Por favor, Ingrese un numero Celular",
                         minlength: "Por favor, Ingrese un mumero de celular valido.",
                         digits: "Por favor, Ingrese un numero de celular valido."
@@ -365,21 +366,21 @@ var js_profile = function(){
 
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m-modalDatos').modal("hide");
-                    if(response[0] == 1){
-                        $('.m-nameuser').html(materno+" "+paterno+", "+nombres);
-                        js_sistema.showErrorMsg(response[1],'success',3000);
-                    }else{
-                        js_sistema.showErrorMsg(response[1],'danger',3000);
+                    if (response[0] == 1) {
+                        $('.m-nameuser').html(materno + " " + paterno + ", " + nombres);
+                        js_sistema.showErrorMsg(response[1], 'success', 3000);
+                    } else {
+                        js_sistema.showErrorMsg(response[1], 'danger', 3000);
                     }
                 }
             });
         });
 
-        $("#btn-cancel-user").click(function(){
+        $("#btn-cancel-user").click(function() {
             $("#btn-submit-user").removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
         });
 
-        $("#btn-submit-password").click(function(e){
+        $("#btn-submit-password").click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -424,20 +425,20 @@ var js_profile = function(){
                 success: function(response, status, xhr, $form) {
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m-modalSignIn').modal("hide");
-                    if(response[0] == 1){
-                        js_sistema.showErrorMsg(response[1],'success',3000);
-                    }else{
-                        js_sistema.showErrorMsg(response[1],'error',3000);
+                    if (response[0] == 1) {
+                        js_sistema.showErrorMsg(response[1], 'success', 3000);
+                    } else {
+                        js_sistema.showErrorMsg(response[1], 'error', 3000);
                     }
                 }
             });
         });
 
-        $("#btn-cancel-password").click(function(){
+        $("#btn-cancel-password").click(function() {
             $("#btn-submit-password").removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
         });
 
-        $("#btn-submit-avatar").click(function(e){
+        $("#btn-submit-avatar").click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -457,27 +458,27 @@ var js_profile = function(){
                 success: function(response, status, xhr, $form) {
                     console.log("response", response);
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
-                    if(response[0] == 1){
+                    if (response[0] == 1) {
                         $('#m-modalAvatar').modal('hide');
-                        js_sistema.showErrorMsg(response[1],'success');
+                        js_sistema.showErrorMsg(response[1], 'success');
                         $('.fotografia').removeAttr('scr');
-                        $('.fotografia').attr('src',response[2]);
-                    } else if(response[0] == 2) {
+                        $('.fotografia').attr('src', response[2]);
+                    } else if (response[0] == 2) {
                         $('#m-modalAvatar').modal('show');
-                        js_sistema.showErrorMsg(response[1],'warning');
+                        js_sistema.showErrorMsg(response[1], 'warning');
                     } else {
                         $('#m-modalAvatar').modal('show');
-                        js_sistema.showErrorMsg(response[1],'error');
+                        js_sistema.showErrorMsg(response[1], 'error');
                     }
                 }
             });
         });
 
-        $("#btn-cancel-avatar").click(function(){
+        $("#btn-cancel-avatar").click(function() {
             $("#btn-submit-avartar").removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
         });
 
-        $("#btn-submit-mensaje").click(function(e){
+        $("#btn-submit-mensaje").click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -510,89 +511,88 @@ var js_profile = function(){
                 success: function(response, status, xhr, $form) {
                     btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m-modalMensaje').modal("hide");
-                    if(response[0] == 1){
+                    if (response[0] == 1) {
                         btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                         dataEnviado.mDatatable('reload');
                         dataRecibido.mDatatable('reload');
-                        js_sistema.showErrorMsg(response[1],'success',3000);
-                    }else{
-                        js_sistema.showErrorMsg(response[1],'danger',3000);
+                        js_sistema.showErrorMsg(response[1], 'success', 3000);
+                    } else {
+                        js_sistema.showErrorMsg(response[1], 'danger', 3000);
                     }
                 }
             });
         });
 
-        $("#btn-submit-faq").click(function(e){
-        })
+        $("#btn-submit-faq").click(function(e) {})
     }
 
-    var modalSingInUpdateSubmit = function(id){
+    var modalSingInUpdateSubmit = function(id) {
         $('#m-modalSignIn').modal('show');
-        $.post('view/module/administrador/administradorModalPassword.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorModalPassword.php', { id: id }, function(data) {
             $('#m_modal_SignIn').html(data);
         })
     }
 
-    var modalAvatarUpdateSubmit = function(id){
+    var modalAvatarUpdateSubmit = function(id) {
         $('#m-modalAvatar').modal('show');
-        $.post('view/module/administrador/administradorModalFoto.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorModalFoto.php', { id: id }, function(data) {
             $('#m_modal_avatar').html(data);
         })
     }
 
-    var modaleMessageUpdateSubmit = function(id){
+    var modaleMessageUpdateSubmit = function(id) {
         $('#m-modalMensaje').modal('show');
-        $.post('view/module/administrador/administradorModalMensaje.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorModalMensaje.php', { id: id }, function(data) {
             $('#m_modal_Mensaje').html(data);
         })
     }
 
-    var modaleSopportUpdateSubmit = function(id){
+    var modaleSopportUpdateSubmit = function(id) {
         $('#m-modalSoporte').modal('show');
-        $.post('view/module/administrador/administradorModalSoporte.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorModalSoporte.php', { id: id }, function(data) {
             $('#m_modal_Soporte').html(data);
         })
     }
 
-    var modaleFAQUpdateSubmit = function(id){
+    var modaleFAQUpdateSubmit = function(id) {
         $('#m-modalFaq').modal('show');
-        $.post('view/module/administrador/administradorModalFAQ.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorModalFAQ.php', { id: id }, function(data) {
             $('#m_modal_Faq').html(data);
         })
     }
 
-    return{
-        init: function(){
+    return {
+        init: function() {
             handleUserUpdateSubmit()
             datatableJsonMensaje()
         },
-        modalUserUpdateSubmit: function(id){
+        modalUserUpdateSubmit: function(id) {
             modalUserUpdateSubmit(id)
         },
-        modalSingInUpdateSubmit: function(id){
+        modalSingInUpdateSubmit: function(id) {
             modalSingInUpdateSubmit(id)
         },
-        modalAvatarUpdateSubmit: function(id){
+        modalAvatarUpdateSubmit: function(id) {
             modalAvatarUpdateSubmit(id)
         },
-        modaleMessageUpdateSubmit: function(id){
+        modaleMessageUpdateSubmit: function(id) {
             modaleMessageUpdateSubmit(id)
         },
-        modaleSopportUpdateSubmit: function(id){
+        modaleSopportUpdateSubmit: function(id) {
             modaleSopportUpdateSubmit(id)
         },
-        modaleFAQUpdateSubmit: function(id){
+        modaleFAQUpdateSubmit: function(id) {
             modaleFAQUpdateSubmit(id)
         },
-        modalMensajViewsubmit: function(id){
+        modalMensajViewsubmit: function(id) {
             modalMensajViewsubmit(id)
         },
-        modalMensajeDeleteSubmit(id){
+        modalMensajeDeleteSubmit(id) {
             modalMensajeDeleteSubmit(id);
         }
     }
 }();
 
-$(document).ready(function(){
+$(document).ready(function() {
     js_profile.init()
 })

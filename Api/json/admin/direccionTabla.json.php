@@ -1,8 +1,7 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
+    include_once "../../core/ControladorBase.php";
 
-    $rs = gestorUsuario::get_login_personal(2);
+	$rs = gestorUsuario::get_login_personal(2);
     $return_arr   = array();
     foreach ($rs as $rows){
         $row_1 = gestorPersonal::set_personal($rows[2]);

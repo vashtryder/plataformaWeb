@@ -95,25 +95,25 @@ var SnippetLogin = function() {
             // btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
             form.ajaxSubmit({
-                url: 'view/module/administrador/administrador.php',
+                url: 'Api/core/module/admin/adminGestor.php',
                 data: form.serialize(),
                 type: 'POST',
                 success: function(response, status, xhr, $form) {
 
-                    console.log("response", response);
+                    console.log("response", $.trim(response));
 
-                    if(response == 1){
+                    if (response == 1) {
                         setTimeout(function() {
                             btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                             showErrorMsg(form, 'danger', 'Usuario inactivo.');
                         }, 2000);
-                    } else if (response == 2){
+                    } else if (response == 2) {
                         setTimeout(function() {
                             btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                             showErrorMsg(form, 'danger', 'Nombre de usuario o contraseña incorrecta. Inténtalo de nuevo.');
                         }, 2000);
                     } else {
-                        window.location = '?s='+response
+                        window.location = '?s=' + $.trim(response);
                     }
                 }
             });

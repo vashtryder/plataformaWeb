@@ -9,7 +9,7 @@
 			return anioModel::setAnioModel($data);
 		}
 
-		public static function setAnioAcademico(){
+		public static function setAnioAcademico($data){
 			return anioModel::setAnioAcademicoModel($data);
 		}
 

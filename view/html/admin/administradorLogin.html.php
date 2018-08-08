@@ -130,7 +130,7 @@
                         </div> -->
                     </div>
                 </div>
-                <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1  m-login__content" style="background-image: url(<?php print_r(ROOT_SISTEMA) ?> /360Fondo.jpg)">
+                <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1  m-login__content" style="background-image: url(<?php print_r(ROOT_SISTEMA) ?>/360Fondo.jpg)">
                     <div class="m-grid__item">
                         <h3 class="m-login__welcome">
                             <center>"Lo que se les dé a los niños, los niños darán a la sociedad"</center>

@@ -25,6 +25,5 @@
             else
                 return $array_basename[1].'direccionLogin.php';
         }
-
     }
 ?>

@@ -55,7 +55,7 @@
 			   case 'administradorImportarEstudiante':
 			   case 'administradorImportarDocente':
 			   case 'administradorRespuesta':
-				   $filename[] = 'administrador/importar.js';
+				   $filename[] = 'admin/importar.js';
 				   $filename[] = 'director/profile.js';
 			   break;
    
@@ -65,86 +65,86 @@
 			   break;
    
 			   case 'administradorInstitucion':
-				   $filename[] = 'administrador/institucion.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/institucion.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'administradorMatricula':
-				   $filename[] = 'administrador/estudiante.js';
+				   $filename[] = 'admin/estudiante.js';
 			   break;
    
 			   case 'administradorAsignacion':
-				   $filename[] = 'administrador/asignacion.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/asignacion.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorGrado':
-				   $filename[] = 'administrador/grado.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/grado.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorSeccion':
-				   $filename[] = 'administrador/seccion.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/seccion.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorNivel':
-				   $filename[] = 'administrador/nivel.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/nivel.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorPeriodo':
-				   $filename[] = 'administrador/periodo.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/periodo.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorArea':
-				   $filename[] = 'administrador/area.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/area.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorCurso':
-				   $filename[] = 'administrador/curso.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/curso.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
 			   case 'administradorDireccion':
 			   case 'administradorTutor':
 			   case 'administradorPadre':
-				   $filename[] = 'administrador/user.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/user.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'administradorProceso':
-				   $filename[] = 'administrador/proceso.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/proceso.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'administradorItem':
-				   $filename[] = 'administrador/item.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/item.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'direccionLogin':
 				   $filename[] = 'director/login.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'administradorLogin':
-				   $filename[] = 'administrador/login.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/login.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'administradorAnio':
-				   $filename[] = 'administrador/anio.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/anio.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'administradorDocente':
 			   case 'administradorDatos':
 			   case 'administradorMensaje':
 			   case 'administradorPersonal':
-				   $filename[] = 'administrador/personal.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/personal.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'padreLogin':
@@ -153,8 +153,8 @@
 			   break;
    
 			   case 'administradorHorario':
-				   $filename[] = 'administrador/horario.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/horario.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
    
 			   case 'direccionHorario':
@@ -168,24 +168,24 @@
 				   break;
    
 			   case 'administradorSemanaEta':
-				   $filename[] = 'administrador/semana.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/semana.js';
+				   $filename[] = 'admin/profile.js';
 				   break;
 			   case 'administradorPreguntaEta':
-				   $filename[] = 'administrador/pregunta.js';
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/pregunta.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   case 'administradorCalificacion':
-				   $filename[] = 'administrador/registroEta.js';
+				   $filename[] = 'admin/registroEta.js';
 			   break;
    
 			   case 'administradorEvento':
-				   $filename[] = 'administrador/evento.js';
+				   $filename[] = 'admin/evento.js';
 			   break;
    
 			   case 'administradorPerfil':
-				   $filename[] = 'administrador/profile.js';
+				   $filename[] = 'admin/profile.js';
 			   break;
    
 			   default:
@@ -199,6 +199,5 @@
 			}
 			return $script;
         }
-
     }
 ?>
