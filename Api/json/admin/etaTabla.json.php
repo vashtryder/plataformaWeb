@@ -1,13 +1,14 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rs_tb = gestorFichaEta::get_eta_tabla();?>
-<?php $rs_sm = gestorSemana::get_eta_semana_fecha(date('Y-m-d')); ?>
+<?php include_once '../../core/ControladorBase.php' ?>
+<?php include_once "../../config/sistema.php" ?>;
+<?php $rs_tb = fichaEtaController::getFichaEtaTabla(); ?>
+<?php $rs_sm = semanaEtaController::getSemanaEtaFecha(date('Y-m-d')); ?>
 <?php $num = 0; ?>
 <?php foreach ($rs_tb as $row_t){   ?>
-    <?php $rs_g  = gestorFichaEta::get_eta_grado($row_t[0]); ?>
-    <?php $rs_s  = gestorFichaEta::get_eta_seccion($row_t[0]); ?>
-    <?php $rs_n  = gestorFichaEta::get_eta_nivel($row_t[0]); ?>
-    <?php $row_g = gestorGrado::set_grado_academico($rs_g[0]); ?>
-    <?php $row_n = gestorNivel::set_nivel_academico($rs_n[0]); ?>
+	<?php $rs_g  = fichaEtaController::getFichaEtaGrado($row_t[0]); ?>
+	<?php $rs_s  = fichaEtaController::getFichaEtaSeccion($row_t[0]); ?>
+	<?php $rs_n  = fichaEtaController::getFichaEtaNivel($row_t[0]); ?>
+	<?php $row_g = gradoController::setGrado($rs_g[0]); ?>
+	<?php $row_n = nivelController::setNivel($rs_n[0]); ?>
     <?php $num++; ?>
 
     <form class="m-form" id="calificarEta_<?php sistema::imprimir($num);?>">
@@ -30,9 +31,9 @@
 
             <div class="col-lg-2">
                 <?php foreach ($rs_s as $rows) { ?>
-                    <?php $row_s  = gestorSeccion::set_seccion_academico($rows[0]); ?>
-                    <?php $row_gr = gestorRegistroEta::get_eta_grupo_aula(array($row_g[0],$row_s[0],$row_n[0],$_SESSION['anio'][0])); ?>
-                    <?php $row_se = gestorFichaEta::get_eta_ficha_cantidad(array($row_t[0],$rows[0])); ?>
+					<?php $row_s  = seccionController::setSeccionAcademico($rows[0]); ?>
+					<?php $row_gr = registroEtaController::getRegistroEtaGrupoAula(array($row_g[0],$row_s[0],$row_n[0],$_SESSION['anio'][0])); #grupo_aula_eta ?>
+					<?php $row_se = fichaEtaController::getFichaEtaCantidad(array($row_t[0],$rows[0])); ?>
                     <?php  ?>
                     <input type="hidden" name="grupo[]" value="<?php sistema::imprimir($row_gr[0]);?>">
                     <input type="hidden" name="seccion[]" value="<?php sistema::imprimir($rows[0]);?>">

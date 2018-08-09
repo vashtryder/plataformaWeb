@@ -1,9 +1,5 @@
 <?php
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-
 	$root_dir = $_SERVER["DOCUMENT_ROOT"]."/plataformaWeb/";
-
 	$strFileRoot = glob( $root_dir . '*' );
 	
 	$root_media  	= $strFileRoot[1].'/media/';
@@ -23,11 +19,9 @@
 				$variable_global = mb_strtoupper('ROOT_' .$archivo.'_'.basename($value),'UTF-8');
 				$subRootFile = str_replace( $root_dir , '', $value);
 				define($variable_global, $subRootFile . '/' );
-				// print_r("define(".$variable_global.",".$subRootFile.")<br>");
 			}
 		}
 	}
-
 
 	$dires=array();
 	$midir=opendir($root_plugins);
@@ -37,7 +31,6 @@
 	   	if (is_dir($root_plugins.$archivo) && $archivo!="." && $archivo!=".."){
 			$variable_global = mb_strtoupper('ROOT_' .basename($archivo),'UTF-8');
 			define($variable_global, $root_plugins.$archivo . '/');
-			// print_r("define(".$variable_global.",".$root_plugins.$archivo.")<br>");
 		}
 	}
 
@@ -49,7 +42,6 @@
 	   	if (is_dir($root_report.$archivo) && $archivo!="." && $archivo!=".."){
 			$variable_global = mb_strtoupper('ROOT_' .basename($archivo),'UTF-8');
 			define($variable_global, $root_report.$archivo . '/');
-			// print_r("define(".$variable_global.",".$root_report.$archivo.")<br>");
 		}
 	}
 
@@ -64,14 +56,8 @@
 				$variable_global = mb_strtoupper('ROOT_' .$archivo.'_'.basename($value),'UTF-8');
 				$subRootFile = str_replace($root_dir, '', $value);
 				define($variable_global, $subRootFile.'/' );
-				// print_r("define(".$variable_global.",".$subRootFile."/)<br>");
-				
 			}
 		}
 	}
 	closedir($midir);
-
-	// function path2url($file, $Protocol='http://') {
-	// 	return $Protocol.$_SERVER['HTTP_HOST'].str_replace($_SERVER['DOCUMENT_ROOT'], '', $file);
-	// }
 ?>

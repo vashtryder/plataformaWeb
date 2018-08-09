@@ -1,17 +1,15 @@
 <?php
     include_once "../../core/ControladorBase.php";
-	$rs = gestorUsuario::get_login_personal(2);
-    $return_arr   = array();
+    $return_arr    = array();
+    $data = array($_SESSION['colegio'][0],$_SESSION['user'][0]);
+	$rs = mensajeController::setMensajeEnviado($data);
     foreach ($rs as $rows){
-        $row_1 = gestorPersonal::set_personal($rows[2]);
-        $row_2 = gestorColegio::set_colegio($row_1[1]);
-
-        $row_array['id']      = $rows[0];
-        $row_array['nombre']  = $row_1[3]." ".$row_1[4]." ".$row_1[5];
-        $row_array['user']    = $rows[3];
-        $row_array['pass']    = $rows[4];
-        $row_array['estado']  = $rows[5];
-        $row_array['colegio'] = $row_2[1];
+        $rows1 = gestorPersonal::set_personal($rows[3]);
+        $row_array['id']     = $rows[0];
+        $row_array['para']   = $rows1[3]." ".$rows1[4]." ".$rows1[5];
+        $row_array['asunto'] = $rows[8];
+        $row_array['fecha']  = sistema::imprimirTiempo($rows[6],$rows[7]);
+        $row_array['status']  = $rows[5];
         array_push($return_arr,$row_array);
     }
 

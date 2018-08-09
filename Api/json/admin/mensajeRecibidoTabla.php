@@ -1,16 +1,16 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
+	include_once "../../core/ControladorBase.php";
+	include_once "../../config/sistema.php";
     $return_arr    = array();
-    $data = array($_SESSION['colegio'][0],$_SESSION['user'][0]);
-    $rs = gestorMensaje::set_mensaje_enviado($data);
+	$data = array($_SESSION['colegio'][0],$_SESSION['user'][0]);
+    $rs = mensajeController::setMensajeRecibido($data)
     foreach ($rs as $rows){
-        $rows1 = gestorPersonal::set_personal($rows[3]);
+        $rows1 = adminController::setAdministrador($rows[4]);
         $row_array['id']     = $rows[0];
         $row_array['para']   = $rows1[3]." ".$rows1[4]." ".$rows1[5];
         $row_array['asunto'] = $rows[8];
         $row_array['fecha']  = sistema::imprimirTiempo($rows[6],$rows[7]);
-        $row_array['status']  = $rows[5];
+        $row_array['status'] = $rows[5];
         array_push($return_arr,$row_array);
     }
 

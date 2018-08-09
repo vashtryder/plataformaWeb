@@ -1,6 +1,6 @@
 <?php
-    include('../../../conf.ini.php');
-    $rs = gestorProceso::get_proceso();
+	include_once "../../core/ControladorBase.php";
+    $rs = moduloController::getModuloModel();
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(

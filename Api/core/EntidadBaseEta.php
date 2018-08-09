@@ -1,12 +1,12 @@
 <?php 
-	class EntidadBase extends MySQL{
+	class EntidadBaseEta extends MySQL{
 		public function __construct() {
 		}
 	
 		public static function consultaForech($consulta='')
         {
             $resultSet = array();
-			$query=MySQL::connectDB()->query($consulta);
+			$query=MySQL::connectETA()->query($consulta);
 			if($query == true){
 				while ($row = $query->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $rows) {
@@ -22,7 +22,7 @@
         public static function consultaArray($consulta='')
         {
             $resultSet = array();
-            $query = MySQL::connectDB()->query($consulta);
+            $query = MySQL::connectETA()->query($consulta);
 			if ($query == true) {
 				while ($row = $query->fetch_array(MYSQLI_NUM)) {
 					$resultSet[] = $row;
@@ -35,20 +35,20 @@
 
         public static function consulta($consulta='')
         {
-            MySQL::connectDB()->query("START TRANSACTION");
-            $query = MySQL::connectDB()->query($consulta);
+            MySQL::connectETA()->query("START TRANSACTION");
+            $query = MySQL::connectETA()->query($consulta);
             if($query === true){
-                MySQL::connectDB()->query("COMMIT");
+                MySQL::connectETA()->query("COMMIT");
                 return 1;
             }else{
-                MySQL::connectDB()->query("ROLLBACK");
+                MySQL::connectETA()->query("ROLLBACK");
                 return 0;
             }
         }
 
         public static function consultaProcedure($consulta='')
         {
-            $query = MySQL::connectDB()->query($consulta);
+            $query = MySQL::connectETA()->query($consulta);
 			if ($query == true) {
 				return true;
 			} else {
@@ -58,12 +58,12 @@
 
         public static function real_escape_string($consulta='')
         {
-			return MySQL::connectDB()->real_escape_string($consulta);
+			return MySQL::connectETA()->real_escape_string($consulta);
         }
 
         public static function consultaFields($consulta='')
         {
-            if ($query = MySQL::connectDB()->query($consulta)) {
+            if ($query = MySQL::connectETA()->query($consulta)) {
                 return $query->field_count;
             } else{
 				return false;

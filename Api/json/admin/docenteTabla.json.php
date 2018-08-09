@@ -1,17 +1,14 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $return_arr    = array();
-    $data = array($_SESSION['colegio'][0],$_SESSION['user'][0]);
-    $rs = gestorMensaje::set_mensaje_recibido($data);
-    foreach ($rs as $rows){
-        $rows1 = gestorPersonal::set_personal($rows[4]);
-
-        $row_array['id']     = $rows[0];
-        $row_array['para']   = $rows1[3]." ".$rows1[4]." ".$rows1[5];
-        $row_array['asunto'] = $rows[8];
-        $row_array['fecha']  = sistema::imprimirTiempo($rows[6],$rows[7]);
-        $row_array['status'] = $rows[5];
+	include_once "../../core/ControladorBase.php";
+    $rs_i = docenteController::getPersonalVista();
+    $return_arr   = array();
+    foreach ($rs_i as $row_i){
+        $row_array['id']       = $row_i[0];
+        $row_array['docente']  = $row_i[1]." ".$row_i[2]." ".$row_i[3];
+        $row_array['dni']      = $row_i[4];
+        $row_array['telefono'] = $row_i[5];
+        $row_array['modulo']   = $row_i[6];
+        $row_array['colegio']  = $row_i[7];
         array_push($return_arr,$row_array);
     }
 
@@ -102,6 +99,5 @@
             ),
         'data' => $data
     );
-
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

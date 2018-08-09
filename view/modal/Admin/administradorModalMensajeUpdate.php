@@ -1,4 +1,5 @@
-<?php include_once '../../../conf.ini.php' ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
 <?php $row = gestorMensaje::set_mensaje($_REQUEST['id']) ?>
 <?php $rows1 = gestorPersonal::set_personal($row[4]); ?>
 

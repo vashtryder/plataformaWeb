@@ -1,5 +1,4 @@
 <?php
-
 	$strFileRoot = glob($_SERVER["DOCUMENT_ROOT"]."/plataformaWeb/*");
 	require_once $strFileRoot[0] ."/config/database.php";
 	

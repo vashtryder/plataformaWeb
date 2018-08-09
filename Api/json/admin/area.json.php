@@ -1,13 +1,12 @@
 <?php
     include_once "../../core/ControladorBase.php";
-	$rs = gestorPersonal::get_personalAcademico($_REQUEST['e']);
-	
+    $rs = areaController::getArea();
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(
             'id' => $row[0],
-            'text' => $row[3]." ".$row[4]." ".$row[5]
+            'text' => $row[3]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

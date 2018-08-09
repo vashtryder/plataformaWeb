@@ -8,7 +8,7 @@
                             <div class="m-login__wrapper">
                                 <div class="m-login__logo">
                                     <a href="#">
-                                        <img src="<?php print_r(ROOT_LOGO . "/logo360.png") ?>" style="width: 70%">
+                                        <img src="<?php print_r(ROOT_IMG_LOGO . "logo360.png") ?>" style="width: 70%">
                                     </a>
                                 </div>
                                 <div class="m-login__signin">
@@ -130,9 +130,9 @@
                         </div> -->
                     </div>
                 </div>
-                <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1  m-login__content" style="background-image: url(<?php print_r(ROOT_SISTEMA) ?>/360Fondo.jpg)">
-                    <div class="m-grid__item">
-                        <h3 class="m-login__welcome">
+                <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content m-grid-item--center" style="background-image: url(<?php print_r(ROOT_IMG_SISTEMA . "360Fondo.jpg") ?>)">
+				    <div class="m-grid__item">
+						<h3 class="m-login__welcome">
                             <center>"Lo que se les dé a los niños, los niños darán a la sociedad"</center>
                         </h3>
                         <p class="m-login__msg">

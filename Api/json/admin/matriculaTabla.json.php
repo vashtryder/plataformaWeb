@@ -1,7 +1,6 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs_i = gestorEstudiante::get_estudiante_vista();
+    require_once "../../core/ControladorBase.php";
+	$rs_i = estudianteController::getEstudianteVista();
     $return_arr   = array();
     foreach ($rs_i as $row_i){
         $row_array['id']     = $row_i[0];
@@ -81,5 +80,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

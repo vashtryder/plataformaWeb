@@ -1,6 +1,6 @@
 <?php
-    include('../../../conf.ini.php');
-    $rs = gestorCurso::get_curso();
+    include_once "../../core/ControladorBase.php";
+    $rs = periodoController::getPeriodo();
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(
@@ -8,5 +8,5 @@
             'text' => $row[3]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

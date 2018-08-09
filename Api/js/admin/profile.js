@@ -35,7 +35,7 @@ var js_profile = function() {
                     type: 'remote',
                     source: {
                         read: {
-                            url: 'view/modal/admin/administradorMensajeRecibidoTabla.php'
+                            url: 'Api/json/admin/mensajeRecibidoTabla.php'
                         },
                     },
                 },
@@ -150,7 +150,7 @@ var js_profile = function() {
                     type: 'remote',
                     source: {
                         read: {
-                            url: 'view/module/administrador/administradorMensajeEnviadoTabla.php'
+                            url: 'Api/json/admin/mensajeEnviadoTabla.php'
                         },
                     },
                 },
@@ -238,15 +238,14 @@ var js_profile = function() {
 
         $('#m-MensajeRecibido').modal('show')
 
-        $.post('view/module/administrador/administradorModalMensajeUpdate.php', { id: id }, function(data) {
+        $.post('view/modal/admin/administradorModalMensajeUpdate.php', { id: id }, function(data) {
             $('#m_Mensaje_Recibido').html(data)
         });
 
         var data = { id: id, update_mensaje: 1 }
-        $.post('view/module/administrador/administrador.php', data, function(data) {
+        $.post('Api/core/module/sistema/mensajeGestor.php', data, function(data) {
             dataRecibido.mDatatable('reload');
         })
-
     }
 
     var modalMensajeDeleteSubmit = function(id) {
@@ -259,7 +258,7 @@ var js_profile = function() {
                     callback: function() {
                         $.ajax({
                             type: 'POST',
-                            url: 'view/module/administrador/administrador.php',
+                            url: 'Api/core/module/sistema/mensajeGestor.php',
                             data: { id: id, delete_mensaje: 1 },
                             dataType: "json",
                             cache: false
@@ -350,29 +349,28 @@ var js_profile = function() {
             }
 
             btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
-
             var nombres = $('#nombres').val();
             var paterno = $('#paterno').val();
             var materno = $('#materno').val();
-
-
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'view/module/director/direccion.php',
+                url: 'Api/core/module/admin/adminGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
-
-
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m-modalDatos').modal("hide");
-                    if (response[0] == 1) {
+                    if ($.trim(response[0]) == 1) {
+                        $('.m-name').html(nombres);
                         $('.m-nameuser').html(materno + " " + paterno + ", " + nombres);
-                        js_sistema.showErrorMsg(response[1], 'success', 3000);
+                        js_sistema.showErrorMsg($.trim(response[1]), 'success', 3000);
                     } else {
-                        js_sistema.showErrorMsg(response[1], 'danger', 3000);
+                        js_sistema.showErrorMsg($.trim(response[1]), 'danger', 3000);
                     }
-                }
+                },
+                error: function(xhr, status) {
+                    js_sistema.showErrorMsg('Disculpe, existió un problema', 'warning', 3000);
+                },
             });
         });
 
@@ -419,7 +417,7 @@ var js_profile = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'view/module/director/direccion.php',
+                url: 'Api/core/module/admin/adminGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -449,7 +447,7 @@ var js_profile = function() {
 
             $.ajax({
                 type: "POST",
-                url: "view/module/director/direccion.php",
+                url: 'Api/core/module/admin/adminGestor.php',
                 dataType: 'json',
                 data: formData,
                 cache: false,
@@ -475,7 +473,7 @@ var js_profile = function() {
         });
 
         $("#btn-cancel-avatar").click(function() {
-            $("#btn-submit-avartar").removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
+            $("#btn-submit-avatar").removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
         });
 
         $("#btn-submit-mensaje").click(function(e) {

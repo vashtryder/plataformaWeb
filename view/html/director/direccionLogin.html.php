@@ -8,7 +8,7 @@
                             <div class="m-login__wrapper">
                                 <div class="m-login__logo">
                                     <a href="#">
-                                        <img src="<?php print_r(ROOT_LOGO . "/logo360.png") ?>" style="width: 70%">
+                                        <img src="<?php print_r(ROOT_LOGO . "logo360.png") ?>" style="width: 70%">
                                     </a>
                                 </div>
                                 <div class="m-login__signin">

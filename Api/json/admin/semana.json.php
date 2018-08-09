@@ -1,6 +1,6 @@
 <?php
-    include('../../../conf.ini.php');
-    $rs = gestorArea::get_area();
+    include_once "../../core/ControladorBase.php";
+	$rs = semanaEtaController::getSemanaEtaAcademica($_REQUEST['p']);
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(
@@ -8,5 +8,5 @@
             'text' => $row[3]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

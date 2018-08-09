@@ -55,7 +55,9 @@
             $_SESSION["user"][7] = $_REQUEST["celular1"];
             $_SESSION["user"][8] = $_REQUEST["celular2"];
 
-            return adminController::getAdministradorUpdate($data);
+			$r = adminController::getAdministradorUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function passwordAdministradorAjax()
@@ -63,24 +65,50 @@
             $data = array();
             array_push($data,$_REQUEST["password"]);
             array_push($data,$_REQUEST["id"]);
-            return adminController::getAdministradorPassword($data);
+			$r = adminController::getAdministradorPassword($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 		
         public static function avatarAdministradorAjax()
         {
-            $data = array();
-            array_push($data, $_FILES['foto']);
-            array_push($data, $_POST['id']);
-            return adminController::getAdministradorAvatar($data);
+			list($ancho, $alto) = getimagesize($_FILES['foto']["tmp_name"]);
+            $anchoImage = 500;
+            $altoImage = 500;
+
+            if($ancho > $anchoImage || $alto > $altoImage){ #1600 X 600
+                $enviarDatos  =  array(0,"La imagen es superior a 500px.");
+            } else{
+                $filepath = RUTA_IMG_PERSONAL . $_FILES['foto']["name"];
+                $filename = $_FILES['foto']["name"];
+
+                $_SESSION['user'][9] = $_FILES['foto']["name"];
+
+                if(file_exists($filepath)){
+                    @unlink($filepath);
+                    $submit = move_uploaded_file($_FILES['foto']["tmp_name"], $filepath);
+                } else {
+                    $submit = move_uploaded_file($_FILES['foto']["tmp_name"], $filepath);
+                }
+
+                $arrayData  = array();
+                array_push($arrayData, $filename);
+				array_push($arrayData, $_REQUEST['id']);
+				$r = adminController::getAdministradorAvatar($arrayData);
+			}
+
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO, FILE_IMG_PERSONAL . $filename ) : array(0,ERROR,'');
+			print_r(json_encode($enviarDatos));
         }
 	}
+	
 	if(isset($_REQUEST["token"])){
 		GestorAdmin::loginAdministradorAjax();
-    } else if(isset($_REQUEST['password_token'])){
+	} else if(isset($_REQUEST['password_token'])){
         GestorAdmin::passwordAdministradorAjax();
-    } else if(isset($_REQUEST["update_token"])){
+	} else if(isset($_REQUEST["update_token"])){
         GestorAdmin::updateAdministradorAjax();
 	} else if(isset($_REQUEST["avatar_token"])){
         GestorAdmin::avatarAdministradorAjax();
-	}
+	} 
 ?>

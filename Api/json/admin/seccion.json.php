@@ -1,6 +1,6 @@
 <?php
-    include('../../../conf.ini.php');
-    $rs = gestorGrado::get_grado();
+    include_once "../../core/ControladorBase.php";
+    $rs = seccionController::getSeccion();
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(
@@ -8,5 +8,5 @@
             'text' => $row[1]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

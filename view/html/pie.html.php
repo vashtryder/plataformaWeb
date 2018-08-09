@@ -132,8 +132,8 @@
 
 
 
-        </div>
-        <!-- end:: Page -->
+	</div>
+	<!-- end:: Page -->
 
 
 	<!-- begin::Quick Nav -->

@@ -47,10 +47,10 @@
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
 
-    <body  class="m--skin- m-page--loading-enabled m-page--loading m-content--skin-light m-header--fixed m-header--fixed-mobile m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default"  >
-	
-	 <!-- begin::Page loader -->
-	 <div class="m-page-loader m-page-loader--base">
+    <body class="m--skin- m-content--skin-light m-header--fixed m-header--fixed-mobile m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default">
+	 
+	<-- begin::Page loader -->
+	 <!-- <div class="m-page-loader m-page-loader--base">
         <div class="m-blockui">
             <span>Cargando...</span>
             <span><div class="m-loader m-loader--brand"></div></span>
@@ -58,7 +58,6 @@
     </div>
 
     <!-- end::Page Loader -->
-
 <?php
 	$variable = isset($_SESSION['tutor']['grado']) ? $_SESSION['tutor']['grado'] : '';
     switch ($variable) {
