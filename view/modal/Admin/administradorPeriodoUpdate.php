@@ -1,6 +1,7 @@
-<?php include_once '../../../conf.ini.php' ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
 <?php $data = array($_REQUEST['id'],$_SESSION['anio'][0]) ?>
-<?php $rows = gestorPeriodo::set_periodo($data) ?>
+<?php $rows = periodoController::setPeriodo($data) ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="update_periodo" value="1">
     <input type="hidden" name="id" value="<?php sistema::imprimir($rows[0])?>">

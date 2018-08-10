@@ -37,7 +37,7 @@ var js_estudiante = function() {
                             url: 'Api/json/admin/matriculaTabla.json.php'
                         },
                     },
-                    pageSize: 30,
+                    pageSize: 10,
                 },
 
                 // layout definition

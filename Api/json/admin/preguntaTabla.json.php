@@ -1,13 +1,16 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorArea::get_area();
-    $return_arr    = array();
+    require_once '../../core/ControladorBase.php';
+
+	$rs = preguntaEtaController::getPreguntaEta();
+
+    $return_arr   = array();
     foreach ($rs as $rows){
-        $row1 = gestorNivel::set_nivel($rows[2]);
-        $row_array['id']    = $rows[0];
-        $row_array['area']  = $rows[3];
-        $row_array['nivel'] = $row1[1];
+		$rows1 = cursoController::setCurso($rows[2]);
+
+        $row_array['id']       = $rows[0];
+        $row_array['curso']    = $rows1[3];
+        $row_array['eta']      = $rows[3];
+        $row_array['pregunta'] = $rows[4];
         array_push($return_arr,$row_array);
     }
 
@@ -99,5 +102,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

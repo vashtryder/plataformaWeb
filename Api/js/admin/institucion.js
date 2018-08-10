@@ -34,7 +34,7 @@ var js_institucion = function() {
                         url: 'Api/json/admin/institucionTabla.json.php'
                     },
                 },
-                pageSize: 30,
+                pageSize: 10,
             },
 
             // layout definition
@@ -217,7 +217,7 @@ var js_institucion = function() {
             var btn = $(this);
             var form = $(this).closest('form');
 
-            // btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
+            btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
 
             form.ajaxSubmit({
                 type: 'POST',
@@ -225,16 +225,17 @@ var js_institucion = function() {
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
-                    // btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
+                    btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m_modalActualizar').modal("hide");
                     if (response[0] == 1) {
                         js_sistema.showErrorMsg(response[1], 'success', 3000);
-                        datatable.mDatatable('reload');
                     } else {
                         js_sistema.showErrorMsg(response[1], 'danger', 3000);
                     }
                 }
             });
+
+            datatable.mDatatable('reload');
         });
 
         $('#btn-cancel-update').click(function(e) {

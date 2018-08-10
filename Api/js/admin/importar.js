@@ -1,7 +1,8 @@
 var js_importar = function() {
-    var handleImportarEstudiante = function(){
+    var srtRootFile = 'Api/report';
+    var handleImportarEstudiante = function() {
 
-        $('#btn_submit-importar').click(function(e){
+        $('#btn_submit-importar').click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -31,37 +32,37 @@ var js_importar = function() {
 
                 messages: {
                     idcolegio: {
-                        required : "Por favor, Seleccione un institucin educativa."
+                        required: "Por favor, Seleccione un institucin educativa."
                     },
                     userfile: {
                         required: 'Por favor, Seleccione un archivo.',
                         extension: 'El archivo seleccionado no es válido'
                     }
                 },
-                errorPlacement: function (error, element) {
+                errorPlacement: function(error, element) {
                     if (element.closest('.form-group').parent('.input-group').length) {
-                        error.insertAfter(element.parent());      // radio/checkbox?
+                        error.insertAfter(element.parent()); // radio/checkbox?
                     } else if (element.closest('.form-group').hasClass('select2-hidden-accessible')) {
                         element.next('span').addClass('has-danger');
                         element = $("#select2-" + elem.closest('.form-group').attr("id") + "-container").parent();
                     } else {
-                        error.insertAfter(element);               // default
+                        error.insertAfter(element); // default
                     }
                 },
-                highlight: function (element, errorClass, validClass) { // hightlight error inputs
+                highlight: function(element, errorClass, validClass) { // hightlight error inputs
                     var elem = $(element);
                     if (elem.closest('.form-group').hasClass("select2-hidden-accessible")) {
-                       $("#select2-" + elem.attr("id") + "-container").parent().addClass('has-danger');
+                        $("#select2-" + elem.attr("id") + "-container").parent().addClass('has-danger');
                     } else {
-                       elem.closest('.form-group').addClass('has-danger');
+                        elem.closest('.form-group').addClass('has-danger');
                     }
                 },
-                unhighlight: function (element) { // revert the change done by hightlight
+                unhighlight: function(element) { // revert the change done by hightlight
                     var elem = $(element);
                     if (elem.closest('.form-group').hasClass("select2-hidden-accessible")) {
                         $("#select2-" + elem.attr("id") + "-container").parent().removeClass('has-danger');
                     } else {
-                         elem.closest('.form-group').removeClass('has-danger');
+                        elem.closest('.form-group').removeClass('has-danger');
                     }
                 }
             });
@@ -76,7 +77,7 @@ var js_importar = function() {
 
             $.ajax({
                 type: "POST",
-                url: "view/module/administrador/reporteImportarEstudiante.xls.php",
+                url: srtRootFile + "/admin/reporteImportarEstudiante.xls.php",
                 data: formData,
                 cache: false,
                 contentType: false,
@@ -89,7 +90,7 @@ var js_importar = function() {
                             <span></span>\
                         </div>\
                         <div class="m-alert__text">\
-                            <strong>' + response +'</strong>\
+                            <strong>' + response + '</strong>\
                         </div>\
                     </div>\
                     ');
@@ -97,14 +98,14 @@ var js_importar = function() {
             });
         });
 
-        $('#btn-submit-exportar').click(function(e){
+        $('#btn-submit-exportar').click(function(e) {
             e.preventDefault();
-            $.post('view/module/administrador/reporteExportarEstudiante.xls.php',function(response){
-                window.location='view/core/report/archive/'+response;
+            $.post(srtRootFile + '/admin/reporteExportarEstudiante.xls.php', function(response) {
+                window.location = 'assets/reports/archive/' + response;
             })
         });
 
-        $('#btn-submit-importar2').click(function(e){
+        $('#btn-submit-importar2').click(function(e) {
 
             e.preventDefault();
             var btn = $(this);
@@ -123,37 +124,37 @@ var js_importar = function() {
 
                 messages: {
                     idcolegio: {
-                        required : "Por favor, Seleccione un institucin educativa."
+                        required: "Por favor, Seleccione un institucin educativa."
                     },
                     userfile: {
                         required: 'Por favor, Seleccione un archivo.',
                         extension: 'El archivo seleccionado no es válido'
                     }
                 },
-                errorPlacement: function (error, element) {
+                errorPlacement: function(error, element) {
                     if (element.closest('.form-group').parent('.input-group').length) {
-                        error.insertAfter(element.parent());      // radio/checkbox?
+                        error.insertAfter(element.parent()); // radio/checkbox?
                     } else if (element.closest('.form-group').hasClass('select2-hidden-accessible')) {
                         element.next('span').addClass('has-danger');
                         element = $("#select2-" + elem.closest('.form-group').attr("id") + "-container").parent();
                     } else {
-                        error.insertAfter(element);               // default
+                        error.insertAfter(element); // default
                     }
                 },
-                highlight: function (element, errorClass, validClass) { // hightlight error inputs
+                highlight: function(element, errorClass, validClass) { // hightlight error inputs
                     var elem = $(element);
                     if (elem.closest('.form-group').hasClass("select2-hidden-accessible")) {
-                       $("#select2-" + elem.attr("id") + "-container").parent().addClass('has-danger');
+                        $("#select2-" + elem.attr("id") + "-container").parent().addClass('has-danger');
                     } else {
-                       elem.closest('.form-group').addClass('has-danger');
+                        elem.closest('.form-group').addClass('has-danger');
                     }
                 },
-                unhighlight: function (element) { // revert the change done by hightlight
+                unhighlight: function(element) { // revert the change done by hightlight
                     var elem = $(element);
                     if (elem.closest('.form-group').hasClass("select2-hidden-accessible")) {
                         $("#select2-" + elem.attr("id") + "-container").parent().removeClass('has-danger');
                     } else {
-                         elem.closest('.form-group').removeClass('has-danger');
+                        elem.closest('.form-group').removeClass('has-danger');
                     }
                 }
             });
@@ -167,7 +168,7 @@ var js_importar = function() {
 
             $.ajax({
                 type: "POST",
-                url: "view/module/administrador/reporteImportarDocente.xls.php",
+                url: srtRootFile + "/admin/reporteImportarDocente.xls.php",
                 data: formData,
                 cache: false,
                 contentType: false,
@@ -179,14 +180,14 @@ var js_importar = function() {
             });
         });
 
-        $('#btn-submit-exportar2').click(function(e){
+        $('#btn-submit-exportar2').click(function(e) {
             e.preventDefault();
-            $.post('view/module/administrador/reporteExportarDocente.xls.php',function(response){
-                window.location='view/core/report/archive/'+response;
+            $.post(srtRootFile + '/admin/reporteExportarDocente.xls.php', function(response) {
+                window.location = 'asset/reports/archive/' + response;
             })
         });
 
-        $('#btn_submit-respuesta1').click(function(e){
+        $('#btn_submit-respuesta1').click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -218,12 +219,12 @@ var js_importar = function() {
 
             $.ajax({
                 type: "POST",
-                url: "view/module/administrador/reporteImportarRespuesta.xls.php",
+                url: srtRootFile + "/admin/reporteImportarRespuesta.xls.php",
                 data: formData,
                 cache: false,
                 contentType: false,
                 processData: false,
-                beforeSend: function(response){
+                beforeSend: function(response) {
                     menssage.html('\<div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-warning alert-dismissible fade show" role="alert">\
                         <div class="m-alert__icon">\
                             <i class="flaticon-exclamation-2"></i>\
@@ -237,19 +238,19 @@ var js_importar = function() {
                 },
                 success: function(response, status, xhr, $form) {
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
-                        var e = {
-                            0: { alert: "alert-danger", messages: "NO CARGO ARCHIVO Y/O HUBO UN ERROR AL IMPORTAR DATOS" },
-                            1: { alert: "alert-brand", messages: "RESPUESTAS IMPORTADAS" },
-                            2: { alert: "alert-warning", messages: "NO CARGO ARCHIVO EXCEL" }
-                        }
+                    var e = {
+                        0: { alert: "alert-danger", messages: "NO CARGO ARCHIVO Y/O HUBO UN ERROR AL IMPORTAR DATOS" },
+                        1: { alert: "alert-brand", messages: "RESPUESTAS IMPORTADAS" },
+                        2: { alert: "alert-warning", messages: "NO CARGO ARCHIVO EXCEL" }
+                    }
 
-                        menssage.html('\<div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert  alert-dismissible fade show '+ e[response].alert + '" role="alert">\
+                    menssage.html('\<div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert  alert-dismissible fade show ' + e[response].alert + '" role="alert">\
                             <div class="m-alert__icon">\
                                 <i class="flaticon-exclamation-2"></i>\
                                 <span></span>\
                             </div>\
                             <div class="m-alert__text">\
-                                <strong>' + e[response].messages +'</strong>\
+                                <strong>' + e[response].messages + '</strong>\
                             </div>\
                         </div>\
                     ');
@@ -257,7 +258,7 @@ var js_importar = function() {
             });
         })
 
-        $('#btn-submit-respuesta2').click(function(e){
+        $('#btn-submit-respuesta2').click(function(e) {
 
             e.preventDefault();
             var btn = $(this);
@@ -266,48 +267,48 @@ var js_importar = function() {
                 rules: {
                     colegio: "required",
                     unidad: "required",
-                    semana:"required",
+                    semana: "required",
                     grado: "required",
-                    seccion:"required",
+                    seccion: "required",
                     nivel: "required",
                 },
                 messages: {
-                    colegio:"Por favor, Seleccione un institucin educativa.",
+                    colegio: "Por favor, Seleccione un institucin educativa.",
                     unidad: "Por favor, Seleccione una unidad.",
                     semana: "Por favor, Seleccione una semana.",
-                    grado:  "Por favor, Seleccione un grado academico.",
-                    seccion:"Por favor, Seleccione una seccion academica.",
-                    nivel:  "Por favor, Seleccione un nivel academico."
+                    grado: "Por favor, Seleccione un grado academico.",
+                    seccion: "Por favor, Seleccione una seccion academica.",
+                    nivel: "Por favor, Seleccione un nivel academico."
                 },
-                errorPlacement: function (error, element) {
+                errorPlacement: function(error, element) {
                     if (element.closest('.form-group').parent('.input-group').length) {
-                        error.insertAfter(element.parent());      // radio/checkbox?
+                        error.insertAfter(element.parent()); // radio/checkbox?
                     } else if (element.closest('.form-group').hasClass('select2-hidden-accessible')) {
                         element.next('span').addClass('has-danger');
                         element = $("#select2-" + elem.closest('.form-group').attr("id") + "-container").parent();
                     } else {
-                        error.insertAfter(element);               // default
+                        error.insertAfter(element); // default
                     }
                 },
-                highlight: function (element, errorClass, validClass) { // hightlight error inputs
+                highlight: function(element, errorClass, validClass) { // hightlight error inputs
                     var elem = $(element);
                     if (elem.closest('.form-group').hasClass("select2-hidden-accessible")) {
-                       $("#select2-" + elem.attr("id") + "-container").parent().addClass('has-danger');
+                        $("#select2-" + elem.attr("id") + "-container").parent().addClass('has-danger');
                     } else {
-                       elem.closest('.form-group').addClass('has-danger');
+                        elem.closest('.form-group').addClass('has-danger');
                     }
                 },
-                unhighlight: function (element) { // revert the change done by hightlight
+                unhighlight: function(element) { // revert the change done by hightlight
                     var elem = $(element);
                     if (elem.closest('.form-group').hasClass("select2-hidden-accessible")) {
                         $("#select2-" + elem.attr("id") + "-container").parent().removeClass('has-danger');
                     } else {
-                         elem.closest('.form-group').removeClass('has-danger');
+                        elem.closest('.form-group').removeClass('has-danger');
                     }
                 }
             });
 
-            $('.select2Colegio, .select2Periodo, .select2Semana, .select2Grado, .select2Seccion, .select2Nivel').on('change', function () {
+            $('.select2Colegio, .select2Periodo, .select2Semana, .select2Grado, .select2Seccion, .select2Nivel').on('change', function() {
                 $(this).valid();
             });
 
@@ -321,14 +322,14 @@ var js_importar = function() {
 
             $.ajax({
                 type: "POST",
-                url: 'view/module/administrador/reporteExportarRespuesta.xls.php',
+                url: srtRootFile + '/admin/reporteExportarRespuesta.xls.php',
                 data: formData,
                 cache: false,
                 contentType: false,
                 processData: false,
                 success: function(response, status, xhr, $form) {
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
-                    if(response == 0){
+                    if (response == 0) {
                         $('.regImportar').html('\<div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-brand alert-dismissible fade show" role="alert">\
                             <div class="m-alert__icon">\
                                 <i class="flaticon-exclamation-2"></i>\
@@ -341,23 +342,23 @@ var js_importar = function() {
                         ');
 
 
-                    } else{
+                    } else {
                         $('.regImportar').html('');
-                        window.location='view/core/report/archive/'+response;
+                        window.location = 'assets/reports/archive/' + response;
                     }
                 }
             });
         })
 
     }
-    return{
-        init: function(){
+    return {
+        init: function() {
             handleImportarEstudiante();
         }
     }
 }();
 
-$(document).ready(function(){
+$(document).ready(function() {
     js_importar.init();
     js_sistema.selects()
 })

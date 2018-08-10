@@ -1,14 +1,21 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorPeriodo::get_periodo();
-    $return_arr   = array();
+    require_once '../../core/ControladorBase.php';
+
+	$rs = horarioController::getHorario();
+    $return_arr    = array();
     foreach ($rs as $rows){
-        $row_1 = gestorAnio::set_anio($rows[1]);
-        $row_array['id']          = $rows[0];
-        $row_array['nombre']      = $rows[3];
-        $row_array['observacion'] = $rows[4];
-        $row_array['anio']        = $row_1[1];
+		$row1 = colegioController::setColegio($rows[1]);
+        $row2 = docenteController::setPersonal($rows[2]);
+        $row3 = cursoController::setCurso($rows[4]);
+        $row4 = gradoController::setGrado($rows[5]);
+        $row5 = seccionController::setSeccion($rows[6]);
+        $row6 = nivelController::setNivel($rows[7]);
+
+        $row_array['id']      = $rows[0];
+        $row_array['docente'] = $row2[3]." ".$row2[4]." ".$row2[5];
+        $row_array['curso']   = $row3[3];
+        $row_array['aula']    = $row4[1]." ".$row5[1]." ".$row6[1];
+        $row_array['colegio'] = $row1[1];
         array_push($return_arr,$row_array);
     }
 
@@ -100,5 +107,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

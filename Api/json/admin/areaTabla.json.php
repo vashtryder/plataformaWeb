@@ -1,22 +1,13 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
+    require_once '../../core/ControladorBase.php';
 
-    $rs = gestorUsuario::get_login_personal(3);
-    $return_arr   = array();
+    $rs = areaController::getArea();
+    $return_arr    = array();
     foreach ($rs as $rows){
-
-        $row_1 = gestorPersonal::set_personal($rows[1]);
-        $row_3 = gestorModulo::set_modulo($rows[2]);
-        $row_2 = gestorColegio::set_colegio($row_1[1]);
-
-        $row_array['id']      = $rows[0];
-        $row_array['nombre']  = $row_1[3]." ".$row_1[4]." ".$row_1[5];
-        $row_array['user']    = $rows[3];
-        $row_array['pass']    = $rows[4];
-        $row_array['estado']  = $rows[5];
-        $row_array['modulo']  = $row_2[1];
-        $row_array['colegio'] = $row_2[1];
+		$row1 = nivelController::setNivel($rows[2]);
+        $row_array['id']    = $rows[0];
+        $row_array['area']  = $rows[3];
+        $row_array['nivel'] = $row1[1];
         array_push($return_arr,$row_array);
     }
 
@@ -108,5 +99,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

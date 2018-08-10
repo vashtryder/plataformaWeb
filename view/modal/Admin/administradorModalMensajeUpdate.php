@@ -1,7 +1,7 @@
 <?php include_once '../../../Api/core/ControladorBase.php' ?>
 <?php include_once '../../../Api/config/sistema.php' ?>
-<?php $row = gestorMensaje::set_mensaje($_REQUEST['id']) ?>
-<?php $rows1 = gestorPersonal::set_personal($row[4]); ?>
+<?php $row = mensajeController::setMensaje($_REQUEST['id']) ?>
+<?php $rows1 = docenteController::setPersonal($row[4]); ?>
 
 <div class="form-group m-form__group row">
     <div class="col-lg-12">

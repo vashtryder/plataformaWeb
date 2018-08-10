@@ -1,5 +1,6 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorSemana::set_semana($_POST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+<?php $rows = semanaEtaController::setSemanaEta($_POST['id']) ?>
 
 <div class="form-group m-form__group row">
      <div class="col-lg-12">

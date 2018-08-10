@@ -1,13 +1,11 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorCurso::get_curso();
-    $return_arr    = array();
+    require_once '../../core/ControladorBase.php';
+
+    $rs = gradoController::getGrado();
+    $return_arr   = array();
     foreach ($rs as $rows){
-        $row1 = gestorArea::set_area($rows[2]);
-        $row_array['id']    = $rows[0];
-        $row_array['curso'] = $rows[3];
-        $row_array['area']  = $row1[3];
+        $row_array['id']      = $rows[0];
+        $row_array['grado']    = $rows[1];
         array_push($return_arr,$row_array);
     }
 
@@ -99,5 +97,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

@@ -29,6 +29,13 @@
 			return estudianteModel::getEstudianteCodigoModel();
 		}
 
+		public static function getEstudianteIdLogin(){
+			return estudianteController::getEstudianteIdLoginModel();
+		}
+		public static function getEstudianteLogin($data){
+			return estudianteModel::getEstudianteLoginModel($data);
+		}
+
 		public static function getEstudianteNew($data){
 			return estudianteModel::getEstudianteNewModel($data);
 		}
@@ -43,6 +50,10 @@
 
 		public static function getEstudianteAvatar($data){
 			return estudianteModel::getEstudianteAvatarModel($data);
+		}
+
+		public static function getEstudianteLoginNew($data){
+			return estudianteModel::getEstudianteLoginNewModel($data);
 		}
 
 

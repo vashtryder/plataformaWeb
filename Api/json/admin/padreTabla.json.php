@@ -1,11 +1,19 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorNivel::get_nivel();
+	require_once '../../core/ControladorBase.php';
+	error_reporting(0);
+    $rs = estudianteController::getEstudiante();
     $return_arr   = array();
     foreach ($rs as $rows){
-        $row_array['id']    = $rows[0];
-        $row_array['nivel'] = $rows[1];
+
+		$row_1 = colegioController::setColegio($rows[1]);
+        $row_2 = estudianteController::getEstudianteLogin($rows[0]);
+
+        $row_array['id']      = $rows[0];
+        $row_array['nombre']  = $rows[3]." ".$rows[4]." ".$rows[5];
+        $row_array['user']    = $row_2[3];
+        $row_array['pass']    = $row_2[4];
+        $row_array['estado']  = $row_2[5];
+        $row_array['colegio'] = $row_1[1];
         array_push($return_arr,$row_array);
     }
 
@@ -97,5 +105,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

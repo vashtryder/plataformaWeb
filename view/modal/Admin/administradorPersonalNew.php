@@ -1,4 +1,5 @@
-<?php include_once '../../../conf.ini.php' ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
 
 <div class="row ">
     <div class="col-md-5 m-form__group form-group">

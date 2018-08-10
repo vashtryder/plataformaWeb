@@ -9,7 +9,7 @@
 			return moduloModel::setModuloModel($data);
 		}
 
-		public static function setModuloPersonal(){
+		public static function setModuloPersonal($data){
 			return moduloModel::setModuloPersonalModel($data);
 		}
 	}

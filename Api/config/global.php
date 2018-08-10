@@ -31,8 +31,10 @@
 	   	if (is_dir($root_plugins.$archivo) && $archivo!="." && $archivo!=".."){
 			$variable_global = mb_strtoupper('ROOT_' .basename($archivo),'UTF-8');
 			define($variable_global, $root_plugins.$archivo . '/');
+			// print($variable_global.' => ['.$root_report.$archivo.'/]<br>');
 		}
 	}
+	closedir($midir);
 
 	$dires=array();
 	$midir=opendir($root_report);
@@ -42,8 +44,11 @@
 	   	if (is_dir($root_report.$archivo) && $archivo!="." && $archivo!=".."){
 			$variable_global = mb_strtoupper('ROOT_' .basename($archivo),'UTF-8');
 			define($variable_global, $root_report.$archivo . '/');
+
 		}
 	}
+	closedir($midir);
+
 
 	$dires=array();
 	$midir=opendir($root_view);
@@ -56,6 +61,7 @@
 				$variable_global = mb_strtoupper('ROOT_' .$archivo.'_'.basename($value),'UTF-8');
 				$subRootFile = str_replace($root_dir, '', $value);
 				define($variable_global, $subRootFile.'/' );
+
 			}
 		}
 	}

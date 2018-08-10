@@ -1,11 +1,21 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorSeccion::get_seccion();
-    $return_arr   = array();
+    require_once '../../core/ControladorBase.php';
+
+    $rs = tutorController::getTutor();
+    $return_arr    = array();
     foreach ($rs as $rows){
+		$row1 = colegioController::setColegio($rows[1]);
+		$row2 = docenteController::setPersonal($rows[3]);
+		$row3 = gradoController::setGrado($rows[4]);
+		$row4 = seccionController::setSeccion($rows[5]);
+		$row5 = nivelController::setNivel($rows[6]);
+
         $row_array['id']      = $rows[0];
-        $row_array['seccion']    = $rows[1];
+        $row_array['docente'] = $row2[3]." ".$row2[4]." ".$row2[5];
+        $row_array['grado']   = $row3[1];
+        $row_array['seccion'] = $row4[1];
+        $row_array['nivel']   = $row5[1];
+        $row_array['colegio'] = $row1[1];
         array_push($return_arr,$row_array);
     }
 
@@ -97,5 +107,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

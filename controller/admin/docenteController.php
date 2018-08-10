@@ -33,6 +33,24 @@
 			return docenteModel::getPersonalDeleteModel($data);
 		}
 
-		
+		public static function getPersonalLoginIdModel(){
+			return docenteModel::getPersonalLoginIdModel();
+		}
+
+		public static function getPersonalLoginModulo($data){
+			return docenteModel::getPersonalLoginModuloModel($data);
+		}
+
+		public function setPersonalLogin($data){
+			return docenteModel::setPersonalLoginModel($data);
+		}
+
+		public static function setPersonalLoginModulo($data){
+			return docenteController::setPersonalLoginModuloModel($data);
+		}
+
+		public static function getPersonalLoginNew($data){
+			return docenteController::getPersonalLoginNewModel($data);
+		}
 	}
 ?>

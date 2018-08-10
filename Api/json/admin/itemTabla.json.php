@@ -1,15 +1,13 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorPregunta::get_pregunta();
+    require_once '../../core/ControladorBase.php';
+
+    $rs = itemController::getItem();
     $return_arr   = array();
     foreach ($rs as $rows){
-        $rows1 = gestorCurso::set_curso($rows[2]);
-
-        $row_array['id']       = $rows[0];
-        $row_array['curso']    = $rows1[3];
-        $row_array['eta']      = $rows[3];
-        $row_array['pregunta'] = $rows[4];
+		$row_i = procesoEtaController::setProcesoEta($rows[1]);
+        $row_array['id']      = $rows[0];
+        $row_array['item']    = $rows[2];
+        $row_array['proceso'] = $row_i[1];;
         array_push($return_arr,$row_array);
     }
 
@@ -101,5 +99,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

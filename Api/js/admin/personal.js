@@ -35,7 +35,7 @@ var js_personal = function() {
                             url: 'Api/json/admin/docenteTabla.json.php'
                         },
                     },
-                    pageSize: 15,
+                    pageSize: 10,
                 },
 
                 // layout definition

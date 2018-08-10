@@ -1,16 +1,11 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorSemana::get_semana();
-    $return_arr    = array();
+    require_once '../../core/ControladorBase.php';
+
+    $rs = nivelController::getNivel();
+    $return_arr   = array();
     foreach ($rs as $rows){
-        $data = array($rows[1],$rows[2]);
-        $rows1 = gestorPeriodo::set_periodo($data);
-        $rows2 = gestorAnio::set_anio($rows[2]);
-        $row_array['id']     = $rows[0];
-        $row_array['semana'] = $rows[3];
-        $row_array['unidad'] = $rows1[3];
-        $row_array['fecha'] = sistema::formato_fecha_corta($rows[4]).' al '.sistema::formato_fecha_corta($rows[5]).' del '.$rows2[1];
+        $row_array['id']    = $rows[0];
+        $row_array['nivel'] = $rows[1];
         array_push($return_arr,$row_array);
     }
 
@@ -102,5 +97,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

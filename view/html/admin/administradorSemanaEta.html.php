@@ -11,7 +11,7 @@
 						<div class="row m-row--full-height">
 							<div class="col-md-2"></div>
 							<div class="col-sm-12 col-md-12 col-lg-12">
-								<div class="m-portlet m-portlet--border-bottom-success m-portlet--rounded">
+								<div class="m-portlet m-portlet--rounded">
 									<div class="m-portlet__head">
 										<div class="m-portlet__head-caption">
 											<div class="m-portlet__head-title">

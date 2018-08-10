@@ -1,5 +1,4 @@
-<?php include_once '../../../conf.ini.php' ?>
-
+<?php include_once '../../../Api/config/sistema.php' ?>
 <div class="m-form__group row">
      <div class="col-lg-6 form-group">
         <input type="hidden" name="new_semana" value="1">

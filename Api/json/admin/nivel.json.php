@@ -8,5 +8,5 @@
             'text' => $row[1]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

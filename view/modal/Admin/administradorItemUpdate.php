@@ -1,5 +1,6 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorItem::set_item($_POST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+<?php $rows = itemController::setItem($_POST['id']) ?>
 <div class="form-group m-form__group row">
     <div class="col-md-6">
         <input type="hidden" name="update_item" value="1">

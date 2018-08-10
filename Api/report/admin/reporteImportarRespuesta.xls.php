@@ -1,5 +1,4 @@
 <?php
-    // include_once '../../../conf.ini.php';
     require_once 'administradorReporte.php';
     $var1 = $_REQUEST['colegio'];
     $var2 = $_FILES['userfile'];

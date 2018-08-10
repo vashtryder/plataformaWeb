@@ -1,4 +1,5 @@
-<?php include_once '../../../conf.ini.php' ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="idanio" value="<?php sistema::imprimir($_SESSION['anio'][0]) ?>">
     <input type="hidden" name="new_curso" value="1">

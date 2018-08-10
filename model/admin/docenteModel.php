@@ -2,9 +2,11 @@
 	class docenteModel extends EntidadBase
 	{
 		private static $table = 'tb_colegio_docente';
+		private static $table_login = 'tb_colegio_login';
 
 		public function __construct() {
 			self::$table;
+			self::$table_login;
 		}
 
 		public static function getPersonalModel()
@@ -40,7 +42,7 @@
             $sql = "SELECT * FROM " . self::$table . " WHERE ID_COLEGIO ='".EntidadBase::real_escape_string($data)."'";
             return EntidadBase::consultaArray($sql);
 		}
-				
+
 		public static function getPersonalIdModel()
         {
             $sql = "SELECT MAX(ID_DOCENTE) FROM " . self::$table . "";
@@ -93,6 +95,43 @@
         {
             $sql = "DELETE FROM " . self::$table . " WHERE ID_DOCENTE = '".EntidadBase::real_escape_string($data)."'";
             return EntidadBase::consulta($sql);
+		}
+		
+		public static function getPersonalLoginIdModel()
+        {
+            $sql = "SELECT MAX(ID_LOGIN) FROM " . self::$table_login;
+            return EntidadBase::consultaForech($sql);
+		}
+		
+		public static function getPersonalLoginModuloModel($data)
+        {
+            $sql = "SELECT * FROM ". self::$table_login ." WHERE ID_MODULO = '".EntidadBase::real_escape_string($data)."'";
+            return EntidadBase::consultaArray($sql);
+		}
+		
+		public static function setPersonalLoginModuloModel($data)
+        {
+            $sql = "SELECT * FROM ". self::$table_login ." WHERE ID_DOCENTE = '".EntidadBase::real_escape_string($data)."'";
+            return EntidadBase::consultaForech($sql);
+		}
+		
+		public static function setPersonalLoginModel($data)
+        {
+            $sql = "SELECT * FROM ". self::$table_login . " WHERE ID_DOCENTE = '".EntidadBase::real_escape_string($data)."'";
+            return EntidadBase::consultaForech($sql);
+		}
+		
+		public static function getPersonalLoginNewModel($data)
+        {
+            $sql = "INSERT INTO ". self::$table_login . " (ID_LOGIN, ID_DOCENTE, ID_MODULO,LOGINUSUARIO, LOGINPASSWORD, LOGINESTADO) VALUES
+            ('".EntidadBase::real_escape_string($data[0])."',
+            '".EntidadBase::real_escape_string($data[1])."',
+            '".EntidadBase::real_escape_string($data[2])."',
+            '".EntidadBase::real_escape_string($data[3])."',
+            '".EntidadBase::real_escape_string($data[4])."',
+            '".EntidadBase::real_escape_string($data[5])."');";
+            return EntidadBase::consulta($sql);
+            // return $sql;
         }
 
 	}

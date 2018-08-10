@@ -1,13 +1,11 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorItem::get_item();
+    require_once '../../core/ControladorBase.php';
+
+    $rs = seccionController::getSeccion();
     $return_arr   = array();
     foreach ($rs as $rows){
-        $row_i = gestorProceso::set_proceso($rows[1]);
         $row_array['id']      = $rows[0];
-        $row_array['item']    = $rows[2];
-        $row_array['proceso'] = $row_i[1];;
+        $row_array['seccion']    = $rows[1];
         array_push($return_arr,$row_array);
     }
 
@@ -99,5 +97,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

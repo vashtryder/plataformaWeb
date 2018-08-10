@@ -105,7 +105,7 @@ var js_profile = function() {
                                     <i class="fa fa-envelope-open-o"></i>\
                                 </a>\
                                 <a onclick="js_profile.modalMensajeDeleteSubmit(' + row.id + ')" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Eliminar">\
-                                    <i class="fa fa-trash"></i>\
+                                    <i class="flaticon-delete-2"></i>\
                                 </a>\
                             ';
                         }

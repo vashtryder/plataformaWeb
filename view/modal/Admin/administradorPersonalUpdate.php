@@ -1,10 +1,12 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorPersonal::set_personal($_REQUEST['id']) ?>
-<?php $row1 = gestorUsuario::set_login_personal($_REQUEST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+
+<?php $rows = docenteController::setPersonal($_REQUEST['id']) ?>
+<?php $row1 = docenteController::setPersonalLogin($_REQUEST['id']) ?>
+
 <?php $valor = ($_REQUEST['valor'] == 0) ? 'disabled' : '';?>
 <?php $name = ($_REQUEST['valor'] == 0) ? 'idcolegio': ''; ?>
 
-<?php  echo $_REQUEST['valor'] ?>
 <div class="form-group m-form__group row">
     <div class="col-lg-5">
         <label class="">Institucion Educativa:</label>

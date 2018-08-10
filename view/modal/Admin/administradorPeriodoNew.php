@@ -1,4 +1,5 @@
-<?php include_once '../../../conf.ini.php' ?>
+
+<?php include_once '../../../Api/config/sistema.php' ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="new_periodo" value="1">
     <input type="hidden" name="anio" value="<?php sistema::imprimir($_SESSION['user'][0])?>">

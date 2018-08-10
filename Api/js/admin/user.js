@@ -39,7 +39,7 @@ var js_user = function() {
                             url: 'Api/json/admin/direccionTabla.json.php'
                         },
                     },
-                    pageSize: 12,
+                    pageSize: 30,
                 },
 
                 // layout definition
@@ -155,10 +155,10 @@ var js_user = function() {
                     type: 'remote',
                     source: {
                         read: {
-                            url: 'view/module/administrador/administradorTutorTabla.php'
+                            url: 'Api/json/admin/tutorTabla.json.php'
                         },
                     },
-                    pageSize: 12,
+                    pageSize: 30,
                 },
 
                 // layout definition
@@ -272,10 +272,10 @@ var js_user = function() {
                     type: 'remote',
                     source: {
                         read: {
-                            url: 'view/module/administrador/administradorPadreTabla.php'
+                            url: 'Api/json/admin/padreTabla.json.php'
                         },
                     },
-                    pageSize: 12,
+                    pageSize: 30,
                 },
 
                 // layout definition

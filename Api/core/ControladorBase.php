@@ -11,6 +11,12 @@
 	$strFileController 	=  	$strFileRoot[2] . '/';
 	$strFileModel      	=  	$strFileRoot[4] . '/';
 	$strFilemedia  		=	$strFileRoot[1].'/media/';
+	$strFileReport 		=	$strFileRoot[1].'/report/';
+
+	define("GUARDADO", "El registro se guardo correctamente.");
+	define("ACTUALIZADO", "El registro se actualizo correctamente.");
+	define("ELIMINADO", "El registro fue eliminado correctamente.");
+	define("ERROR", "Disculpe, existió un problema.");
 
 	$array_baseController = $array_baseModel = array();
 	$scanned_directory = array_diff(scandir($strFileModel), array('..', '.'));
@@ -35,11 +41,6 @@
 		}
 	}
 
-	define("GUARDADO", "El registro se guardo correctamente.");
-	define("ACTUALIZADO", "El registro se actualizo correctamente.");
-	define("ELIMINADO", "El registro fue eliminado correctamente.");
-	define("ERROR", "Disculpe, existió un problema.");
-
 	$dires=array();
 	$midir=opendir($strFilemedia);
 	$i=$k=0;
@@ -55,4 +56,6 @@
 			}
 		}
 	}
+
+
 ?>

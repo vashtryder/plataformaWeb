@@ -1,5 +1,6 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorPregunta::set_pregunta($_REQUEST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+<?php $rows = preguntaEtaController::setPreguntaEta($_REQUEST['id']) ?>
 <div class="row m-form__group">
     <div class="col-lg-12 form-group ">
         <input type="hidden" name="update_pregunta" value="1">

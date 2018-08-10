@@ -1,22 +1,25 @@
 <?php
-    include_once '../../../conf.ini.php';
-    include_once ROOT_EXCEL.'PHPExcel.php';
+	include_once '../../core/ControladorBase.php';
+	include_once "../../config/global.php";
+	include_once "../../config/sistema.php";
 
+	include_once ROOT_PHPEXCEL .'PHPExcel.php';
+	
     function get_import_estudiante($data)
     {
-        include_once ROOT_EXCEL.'PHPExcel\\IOFactory.php';
+        include_once ROOT_PHPEXCEL . 'PHPExcel\\IOFactory.php';
 
         $nombre_archivo = $archivo = $data[1]['name'];
-        $destino        = $_SERVER['DOCUMENT_ROOT']."/EVA/view/core/report/archive/bak_".$nombre_archivo;
+        $destino        = ROOT_ARCHIVE . "bak_".$nombre_archivo;
         $c = $nroId = $nroLogin0 = 0;
         if (move_uploaded_file($data[1]['tmp_name'],$destino)){
 
             if (file_exists($destino)){
 
-                $rows1 = gestorEstudiante::get_id_estudiante();
-                $rows2 = gestorFicha::get_codigo_estudiante();
-                $rows3 = gestorFicha::get_id_ficha();
-                $rows4 = gestorUsuario::get_id_padre_login();
+				$rows1 = estudianteController::getEstudianteId();
+				$rows2 = fichaController::getFichaCodigo();
+				$rows3 = fichaController::getFichaId();
+				$rows4 = estudianteController::getEstudianteIdLogin();
 
                 $objPHPExcel = PHPExcel_IOFactory::load($destino);
                 $nroId     = $rows1[0];
@@ -77,9 +80,9 @@
                             $celdaseccion         = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
                             $celdanivel           = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
 
-                            $row_g                = gestorGrado::set_grado_academico($celdagrado);
-                            $row_s                = gestorSeccion::set_seccion_academico($celdaseccion);
-                            $row_n                = gestorNivel::set_nivel_academico($celdanivel);
+							$row_g                = gradoController::setGradoAcademico($celdagrado);
+							$row_s                = seccionController::setSeccionAcademico($celdaseccion);
+							$row_n                = nivelController::setNivelAcademico($celdanivel);
 
                             $estudianteGrado      = $row_g[0];
                             $estudianteSeccion    = $row_s[0];
@@ -102,7 +105,7 @@
                             array_push($data1, $estudianteCorreo);
                             array_push($data1, $estudianteFoto);
 
-                            $r1 = gestorEstudiante::new_estudiante($data1);
+							$r1 = estudianteController::getEstudianteNew($data1);
 
                             array_push($data2, $nroficha);
                             array_push($data2, $estudianteColegio);
@@ -116,7 +119,7 @@
                             array_push($data2, $estudianteFecha);
                             array_push($data2, $estudianteHora);
 
-                            $r2 = gestorFicha::new_ficha($data2);
+							$r2 = fichaController::getFichaNew($data2);
 
                             array_push($data3, $nroLogin);
                             array_push($data3, $estudianteColegio);
@@ -125,29 +128,29 @@
                             array_push($data3, $estudianteDni);
                             array_push($data3, 1);
 
-                            $r3 = gestorUsuario::new_login_padre($data3);
+							$r3 = estudianteController::getEstudianteLoginNew($data3);
 
-                            // sistema::imprimir($r1);
+                            // print_r($r1);
                         }
 
                     }
 
-                    sistema::imprimir("Registros Insertados: ". $nroId);
+                    print_r("Registros Insertados: ". $nroId);
                 }
 
             } else {
-                sistema::imprimir(1);
+                print_r(1);
             }
 
         } else {
-            sistema::imprimir(0);
+            print_r(0);
         }
     }
 
     function get_export_estudiante()
     {
         $objPHPExcel = new PHPExcel();
-        include_once ROOT_EXCEL.'PHPConfig.php';
+        include_once ROOT_PHPEXCEL .'PHPConfig.php';
 
         $arrayName = array('DNI','APELLIDO PATERNO','APELLIDO MATERNO','NOMBRE COMPLETO','GRADO','SECCIÓN','NIVEL','SEXO','DIRECCION','TELEFONO 1','TELEFONO 2','FECHA NACIMIENTO','EMAIL');
         $arraySize = array(15,30,30,30,24,24,24,45,15,15,45,6);
@@ -159,25 +162,25 @@
         }
 
         $nombreArchivo = "ETA_importar_estudiante.xlsx";
-        require_once ROOT_EXCEL.'PHPExcel\\IOFactory.php';
+        require_once ROOT_PHPEXCEL .'PHPExcel\\IOFactory.php';
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save($_SERVER['DOCUMENT_ROOT']."/EVA/view/core/report/archive/".$nombreArchivo);
-        sistema::imprimir(utf8_decode($nombreArchivo));
+        $objWriter->save(ROOT_ARCHIVE  . $nombreArchivo);
+        print_r(utf8_decode($nombreArchivo));
     }
 
     function get_import_docente($data)
     {
-        include_once ROOT_EXCEL.'PHPExcel\\IOFactory.php';
+        include_once ROOT_PHPEXCEL .'PHPExcel\\IOFactory.php';
 
         $nombre_archivo = $archivo = $data[1]['name'];
-        $destino        = $_SERVER['DOCUMENT_ROOT']."/EVA/view/core/report/archive/bak_".$nombre_archivo;
+        $destino        = ROOT_ARCHIVE  . "bak_".$nombre_archivo;
         $c = $nroId = $nroLogin0 = 0;
         if (move_uploaded_file($data[1]['tmp_name'],$destino)){
 
             if (file_exists ($destino)){
 
-                $rows1 = gestorPersonal::get_id_personal();
-                $rows2 = gestorUsuario::get_id_personal_login();
+				$rows1 = docenteController::getPersonalId(); 
+				$rows2 = docenteController::getPersonalLoginId();
 
                 $objPHPExcel = PHPExcel_IOFactory::load($destino);
                 $nroId       = $rows1[0];
@@ -226,7 +229,7 @@
 
                             $personalFoto       = sistema::get_info_foto_personal('',$personalSexo);
 
-                            $row3               = gestorModulo::set_modulo_personal($personalModulo);
+							$row3               = moduloController::setModuloPersonal($personalModulo);
                             $personalModulo     = $row3[0];
 
                             $data1 = array();
@@ -245,7 +248,8 @@
                             array_push($data1, $personalNacimiento);
                             array_push($data1, $personalFoto);
 
-                            $r1 = gestorPersonal::new_personal($data1);
+							$r1 = docenteController::getPersonalNew($data1); 
+
 
                             $data2 = array();
                             array_push($data2, $nroLogin);
@@ -255,28 +259,28 @@
                             array_push($data2, $personalDni);
                             array_push($data2, 1);
 
-                            $r2 = gestorUsuario::new_login_personal($data2);
+							$r2 = docenteController::getPersonalLoginNew($data2);
 
                         }
 
                     }
 
-                    sistema::imprimir("Registros Insertados: ". $c);
+                    print_r("Registros Insertados: ". $c);
                 }
 
             } else {
-                sistema::imprimir(2);
+                print_r(2);
             }
 
         } else {
-            sistema::imprimir(0);
+            print_r(0);
         }
     }
 
     function get_export_docente()
     {
         $objPHPExcel = new PHPExcel();
-        include_once ROOT_EXCEL.'PHPConfig.php';
+        include_once ROOT_PHPEXCEL .'PHPConfig.php';
 
         $arrayName = array('DNI','APELLIDO PATERNO','APELLIDO MATERNO','NOMBRE COMPLETO','CARGO','DIRECCION','TELEFONO 1','TELEFONO 2','EMAIL','SEXO');
         $arraySize = array(15,30,30,30,25,45,15,15,45,6);
@@ -288,15 +292,15 @@
         }
 
         $nombreArchivo = "ETA_importar_docente.xlsx";
-        require_once ROOT_EXCEL.'PHPExcel\\IOFactory.php';
+        require_once ROOT_PHPEXCEL .'PHPExcel\\IOFactory.php';
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save($_SERVER['DOCUMENT_ROOT']."/EVA/view/core/report/archive/".$nombreArchivo);
-        sistema::imprimir(utf8_decode($nombreArchivo));
+        $objWriter->save(ROOT_ARCHIVE  . $nombreArchivo);
+        print_r(utf8_decode($nombreArchivo));
     }
 
     function get_export_respuesta($data){
         $objPHPExcel = new PHPExcel();
-        include_once ROOT_EXCEL.'PHPConfig.php';
+        include_once ROOT_PHPEXCEL .'PHPConfig.php';
 
         list($colegio,$unidad,$semana,$eta,$grado,$seccion,$nivel,$anio) = $data;
 
@@ -308,8 +312,8 @@
             $tabla = 'tb_eta_respuesta2';
         }
 
-        $r_respuesta = gestorRespuestaEta::get_id_respuesta($tabla);
-        $r_registro  = gestorRegistroEta::get_eta_registro(array($grado,$seccion,$nivel,$colegio,$anio,$semana));
+		$r_respuesta =  respuestaEtaController::getRespuestaEtaId($tabla);
+		$r_registro  = 	registroEtaController::getRegistroEtaAula(array($grado,$seccion,$nivel,$colegio,$anio,$semana));
 
         if($r_registro){
             $arrayName = array('ID',"COD.\nREGISTO","COD.\nCOLEGIO","GRUPO\nETA");
@@ -333,27 +337,27 @@
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValueByColumnAndRow($key,2, $value);
             }
 
-            list( $idGrado, $nombreGrado)     = GestorGrado::set_grado($grado);
-            list( $idSeccion, $nombreSeccion) = GestorSeccion::set_seccion($seccion);
-            list( $idNivel, $nombreNivel)     = GestorNivel::set_nivel($nivel);
+			list( $idGrado, $nombreGrado)     = gradoController::setGrado($grado);
+			list( $idSeccion, $nombreSeccion) = seccionController::setSeccion($seccion);
+			list( $idNivel, $nombreNivel)     = nivelController::setNivel($nivel);
 
             $nombreArchivo = "respuesta_".$nombreGrado."_".$nombreSeccion."_".$nombreNivel.".xlsx";
-            require_once ROOT_EXCEL.'PHPExcel\\IOFactory.php';
+            require_once ROOT_PHPEXCEL .'PHPExcel\\IOFactory.php';
             $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-            $objWriter->save($_SERVER['DOCUMENT_ROOT']."/EVA/view/core/report/archive/".$nombreArchivo);
-            sistema::imprimir($nombreArchivo);
+            $objWriter->save(ROOT_ARCHIVE . $nombreArchivo);
+            print_r($nombreArchivo);
 
         } else {
-            sistema::imprimir(0);
+            print_r(0);
         }
     }
 
     function get_import_respuesta($data){
 
-        include_once ROOT_EXCEL.'PHPExcel\\IOFactory.php';
+        include_once ROOT_PHPEXCEL .'PHPExcel\\IOFactory.php';
 
         $nombre_archivo = $archivo = $data[1]['name'];
-        $destino        = $_SERVER['DOCUMENT_ROOT']."/EVA/view/core/report/archive/bak_".$nombre_archivo;
+        $destino        = ROOT_ARCHIVE . $nombre_archivo;
 
 
         if (move_uploaded_file($data[1]['tmp_name'],$destino)){
@@ -404,22 +408,22 @@
                                 array_push($data1, $rowRespuesta[$i] );
                             }
 
-                            $r = gestorRespuestaEta::new_eta_respuesta($data1,$respuestas,$tabla);
+							$r = respuestaEtaController::getRespuestaEtaNew($data1,$respuestas,$tabla);
 
-                            // sistema::imprimir($r);
+                            // print_r($r);
                         }
 
                     }
 
-                    ($r !== false) ? sistema::imprimir(1) : sistema::imprimir(0);
+                    ($r !== false) ? print_r(1) : print_r(0);
                 }
 
             } else {
-                sistema::imprimir(2);
+                print_r(2);
             }
 
         } else {
-            sistema::imprimir(0);
+            print_r(0);
         }
     }
 

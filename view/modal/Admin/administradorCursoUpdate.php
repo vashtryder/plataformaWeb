@@ -1,5 +1,6 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorCurso::set_curso($_REQUEST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+<?php $rows = cursoController::setCurso($_REQUEST['id']) ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="id" value="<?php sistema::imprimir($rows[0]) ?>">
     <input type="hidden" name="update_curso" value="1">

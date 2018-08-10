@@ -1,7 +1,7 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorAnio::get_anio();
+    require_once '../../core/ControladorBase.php';
+
+    $rs = anioController::getAnio();
     $return_arr    = array();
     foreach ($rs as $rows){
         $row_array['id']      = $rows[0];
@@ -98,5 +98,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encodea( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

@@ -1,18 +1,17 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorEStudiante::get_estudiante();
-    $return_arr   = array();
-    foreach ($rs as $rows){
-        $row_1 = gestorColegio::set_colegio($rows[1]);
-        $row_2 = gestorUsuario::set_login_padre($rows[0]);
+    require_once '../../core/ControladorBase.php';
+	include_once "../../config/sistema.php";
 
-        $row_array['id']      = $rows[0];
-        $row_array['nombre']  = $rows[3]." ".$rows[4]." ".$rows[5];
-        $row_array['user']    = $row_2[3];
-        $row_array['pass']    = $row_2[4];
-        $row_array['estado']  = $row_2[5];
-        $row_array['colegio'] = $row_1[1];
+    $rs = semanaEtaController::getSemanaEta();
+    $return_arr    = array();
+    foreach ($rs as $rows){
+        $data = array($rows[1],$rows[2]);
+		$rows1 = periodoController::setPeriodo($data);
+		$rows2 = anioController::setAnio($rows[2]);
+        $row_array['id']     = $rows[0];
+        $row_array['semana'] = $rows[3];
+        $row_array['unidad'] = $rows1[3];
+        $row_array['fecha'] = sistema::formato_fecha_corta($rows[4]).' al '.sistema::formato_fecha_corta($rows[5]).' del '.$rows2[1];
         array_push($return_arr,$row_array);
     }
 
@@ -104,5 +103,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+    print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

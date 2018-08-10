@@ -1,4 +1,5 @@
-<?php include_once '../../../conf.ini.php' ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
 <div class="form-group m-form__group row">
     <div class="col-lg-12">
         <input type="hidden" name="update_evento" value="1">

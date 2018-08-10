@@ -1,5 +1,4 @@
 <?php
-    // include_once '../../../conf.ini.php';
     require_once 'administradorReporte.php';
     $data = array();
     array_push($data, $_REQUEST['colegio']);

@@ -1,11 +1,21 @@
 <?php
-    require_once '../../../conf.ini.php';
-    // include_once 'class-list-util.php';
-    $rs = gestorGrado::get_grado();
+    require_once '../../core/ControladorBase.php';
+
+	$rs = docenteController::getPersonalLoginModulo(3);
     $return_arr   = array();
     foreach ($rs as $rows){
+
+		$row_1 = docenteController::setPersonal($rows[1]);
+		$row_3 = moduloController::setModuloModel($rows[2]);
+		$row_2 = colegioController::setColegio($row_1[1]);
+
         $row_array['id']      = $rows[0];
-        $row_array['grado']    = $rows[1];
+        $row_array['nombre']  = $row_1[3]." ".$row_1[4]." ".$row_1[5];
+        $row_array['user']    = $rows[3];
+        $row_array['pass']    = $rows[4];
+        $row_array['estado']  = $rows[5];
+        $row_array['modulo']  = $row_2[1];
+        $row_array['colegio'] = $row_2[1];
         array_push($return_arr,$row_array);
     }
 
@@ -83,7 +93,6 @@
         }, $alldata);
     }
 
-
     header( 'Content-Type: application/json' );
     header( 'Access-Control-Allow-Origin: *' );
     header( 'Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS' );
@@ -97,5 +106,5 @@
         'data' => $data
     );
 
-    sistema::imprimir(json_encode( $result, JSON_PRETTY_PRINT ));
+   print_r(json_encode( $result, JSON_PRETTY_PRINT ));
 ?>

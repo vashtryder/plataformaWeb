@@ -1,4 +1,5 @@
-<?php include_once '../../../conf.ini.php' ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
 <div class="row m-form__group">
     <div class="col-lg-12 form-group">
         <label for="">CURSO ACADÉMICO</label>

@@ -1,108 +1,109 @@
 var js_horario = function() {
+    var srtRootFile = 'Api/json';
     var datatable = $('.m_regHorario');
 
-    var DatatableJsonHorario = function(){
+    var DatatableJsonHorario = function() {
         var datatable = $('.m_regHorario').mDatatable({
-                translate: {
-                    records: {
-                        processing: 'Cargando...',
-                        noRecords: 'No se encontrarón registros'
-                    },
-                    toolbar: {
-                        pagination: {
-                            items: {
-                                default: {
-                                    first: 'Primero',
-                                    prev: 'Anterior',
-                                    next: 'Siguiente',
-                                    last: 'Último',
-                                    more: 'Más páginas',
-                                    input: 'Número de página',
-                                    select: ''
-                                },
-                                info: 'Viendo {{start}} - {{end}} de {{total}} registros'
-                            }
+            translate: {
+                records: {
+                    processing: 'Cargando...',
+                    noRecords: 'No se encontrarón registros'
+                },
+                toolbar: {
+                    pagination: {
+                        items: {
+                            default: {
+                                first: 'Primero',
+                                prev: 'Anterior',
+                                next: 'Siguiente',
+                                last: 'Último',
+                                more: 'Más páginas',
+                                input: 'Número de página',
+                                select: ''
+                            },
+                            info: 'Viendo {{start}} - {{end}} de {{total}} registros'
                         }
                     }
-                },
+                }
+            },
 
-                // datasource definition
-                data: {
-                    type: 'remote',
-                    source: {
-                        read: {
-                            url: 'view/module/administrador/administradorHorarioTabla.php'
-                        },
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: 'Api/json/admin/horarioTabla.json.php'
                     },
-                    pageSize: 12,
                 },
+                pageSize: 30,
+            },
 
-                // layout definition
-                layout: {
-                    theme: 'default', // datatable theme
-                    class: '', // custom wrapper class
-                    scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
-                    footer: false // display/hide footer
-                },
+            // layout definition
+            layout: {
+                theme: 'default', // datatable theme
+                class: '', // custom wrapper class
+                scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
+                footer: false // display/hide footer
+            },
 
-                // column sorting
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#generalSearch')
+            },
+
+            // columns definition
+            columns: [{
+                field: 'id',
+                title: "#",
+                responsive: { visible: 'lg' },
                 sortable: true,
-
-                pagination: true,
-
-                search: {
-                    input: $('#generalSearch')
-                },
-
-                // columns definition
-                columns: [{
-                    field: 'id',
-                    title: "#",
-                    responsive: {visible: 'lg'},
-                    sortable: true,
-                    textAlign: 'center'
-                }, {
-                    field: 'docente',
-                    title: "DOCENTE",
-                    // width: 250,
-                    textAlign: 'center'
-                },{
-                    field: 'curso',
-                    title: "CURSO ACADÉMICO",
-                    // width: 250,
-                    textAlign: 'center'
-                },{
-                    field: 'aula',
-                    title: "SALON",
-                    // width: 250,
-                    textAlign: 'center'
-                },{
-                    field: 'colegio',
-                    title: "INSTITUCIÓN EDUCATIVA",
-                    // width: 250,
-                    textAlign: 'center'
-                },{
-                    field: "Acciones",
-                    width: 110,
-                    sortable: false,
-                    title: "Acciones",
-                    overflow: 'visible',
-                    template: function (row, index, datatable) {
-                        return '\<a onclick="js_horario.modalHorarioUpdateSubmit('+ row.id +')" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Actualizar">\
-                                    <i class="fa fa-edit"></i>\
+                textAlign: 'center'
+            }, {
+                field: 'docente',
+                title: "DOCENTE",
+                // width: 250,
+                textAlign: 'center'
+            }, {
+                field: 'curso',
+                title: "CURSO ACADÉMICO",
+                // width: 250,
+                textAlign: 'center'
+            }, {
+                field: 'aula',
+                title: "SALON",
+                // width: 250,
+                textAlign: 'center'
+            }, {
+                field: 'colegio',
+                title: "INSTITUCIÓN EDUCATIVA",
+                // width: 250,
+                textAlign: 'center'
+            }, {
+                field: "Acciones",
+                width: 110,
+                sortable: false,
+                title: "Acciones",
+                overflow: 'visible',
+                template: function(row, index, datatable) {
+                    return '\<a onclick="js_horario.modalHorarioUpdateSubmit(' + row.id + ')" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Actualizar">\
+                                    <i class="flaticon-edit-1"></i>\
                                 </a>\
-                                <a onclick="js_horario.modalHorarioDeleteSubmit('+ row.id +')" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Eliminar">\
-                                    <i class="fa fa-trash"></i>\
+                                <a onclick="js_horario.modalHorarioDeleteSubmit(' + row.id + ')" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Eliminar">\
+                                    <i class="flaticon-delete-2"></i>\
                                 </a>\
                             ';
-                    }
-                }]
+                }
+            }]
         });
         var query = datatable.getDataSourceQuery();
     }
 
-    var handelHorarioSubmit = function(){
-        $('#btn-submit-new').click(function(e){
+    var handelHorarioSubmit = function() {
+        $('#btn-submit-new').click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -129,28 +130,28 @@ var js_horario = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'view/module/director/direccion.php',
+                url: 'Api/core/module/admin/horarioGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m_modalAgregar').modal("hide");
-                    if(response[0] == 1){
-                        js_sistema.showErrorMsg(response[1],'success',3000);
+                    if (response[0] == 1) {
+                        js_sistema.showErrorMsg(response[1], 'success', 3000);
                         datatable.mDatatable('reload');
-                    }else{
-                        js_sistema.showErrorMsg(response[1],'danger',3000);
+                    } else {
+                        js_sistema.showErrorMsg(response[1], 'danger', 3000);
                     }
                 }
             });
 
         });
 
-        $('#btn-cancel-new').click(function(e){
+        $('#btn-cancel-new').click(function(e) {
             $('#btn-submit-new').removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false)
         });
 
-        $('#btn-submit-update').click(function(e){
+        $('#btn-submit-update').click(function(e) {
             e.preventDefault();
             var btn = $(this);
             var form = $(this).closest('form');
@@ -159,73 +160,73 @@ var js_horario = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'view/module/director/direccion.php',
+                url: 'Api/core/module/admin/horarioGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
                     btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m_modalActualizar').modal("hide");
-                    if(response[0] == 1){
-                        js_sistema.showErrorMsg(response[1],'success',3000);
+                    if (response[0] == 1) {
+                        js_sistema.showErrorMsg(response[1], 'success', 3000);
                         datatable.mDatatable('reload');
-                    }else{
-                        js_sistema.showErrorMsg(response[1],'danger',3000);
+                    } else {
+                        js_sistema.showErrorMsg(response[1], 'danger', 3000);
                     }
                 }
             });
         });
 
-        $('#btn-cancel-update').click(function(e){
+        $('#btn-cancel-update').click(function(e) {
             $('#btn-submit-update').removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false)
         });
     }
 
-    var modalHorarioNewSubmit = function(){
+    var modalHorarioNewSubmit = function() {
         $('#m_modalAgregar').modal('show');
-        $.post('view/module/director/direccionHorarioNew.php',function(data){
+        $.post('view/modal/admin/administradorHorarioNew.php', function(data) {
             $('#m_modalNew').html(data);
         })
     }
 
-    var modalHorarioUpdateSubmit = function(id){
+    var modalHorarioUpdateSubmit = function(id) {
         $('#m_modalActualizar').modal('show');
-        $.post('view/module/director/direccionHorarioUpdate.php',{id:id},function(data){
+        $.post('view/modal/admin/administradorHorarioUpdate.php', { id: id }, function(data) {
             $('#m_modalUpdate').html(data);
             $('#m_modalUpdate').html(data);
             a = $('#colegio').val();
-            $.post("view/core/json/colegio.json.php", function (r) {
-                $('.select2Colegio').select2({data: r, cache: false });
+            $.post(srtRootFile + "/admin/colegio.json.php", function(r) {
+                $('.select2Colegio').select2({ data: r, cache: false });
                 $('.select2Colegio').val(a).trigger('change.select2')
-            },'json');
+            }, 'json');
             b = $('#docente').val();
-            $.post("view/core/json/docente.json.php",{e:a}, function (r) {
-                $('.select2Docente').select2({data: r, cache: false });
+            $.post(srtRootFile + "/director/docente.json.php", { e: a }, function(r) {
+                $('.select2Docente').select2({ data: r, cache: false });
                 $('.select2Docente').html().val(b).trigger('change.select2')
-            },'json');
+            }, 'json');
             c = $('#curso').val();
-            $.post("view/core/json/curso.json.php",{e:a}, function (r) {
-                $('.select2Curso').select2({data: r, cache: false });
+            $.post(srtRootFile + "/admin/curso.json.php", { e: a }, function(r) {
+                $('.select2Curso').select2({ data: r, cache: false });
                 $('.select2Curso').html().val(c).trigger('change.select2')
-            },'json');
+            }, 'json');
             d = $('#grado').val();
-            $.post("view/core/json/grado.json.php", function (r) {
-                $('.select2Grado').select2({data: r, cache: false });
+            $.post(srtRootFile + "/admin/grado.json.php", function(r) {
+                $('.select2Grado').select2({ data: r, cache: false });
                 $('.select2Grado').val(d).trigger('change.select2')
-            },'json');
+            }, 'json');
             e = $('#seccion').val();
-            $.post("view/core/json/seccion.json.php", function (r) {
-                $('.select2Seccion').select2({data: r, cache: false });
+            $.post(srtRootFile + "/admin/seccion.json.php", function(r) {
+                $('.select2Seccion').select2({ data: r, cache: false });
                 $('.select2Seccion').val(e).trigger('change.select2')
-            },'json');
+            }, 'json');
             f = $('#nivel').val();
-            $.post("view/core/json/nivel.json.php", function (r) {
-                $('.select2Nivel').select2({data: r, cache: false });
+            $.post(srtRootFile + "/admin/nivel.json.php", function(r) {
+                $('.select2Nivel').select2({ data: r, cache: false });
                 $('.select2Nivel').val(f).trigger('change.select2')
-            },'json');
+            }, 'json');
         })
     }
 
-    var modalHorarioDeleteSubmit = function(id){
+    var modalHorarioDeleteSubmit = function(id) {
         bootbox.dialog({
             message: "ESTA SEGURO DE ELIMINAR",
             buttons: {
@@ -234,17 +235,17 @@ var js_horario = function() {
                     className: "btn btn-outline-success",
                     callback: function() {
                         $.ajax({
-                            type:'POST',
-                            url:'view/module/direccion/direccion.php',
-                            data: {id:id, delete_horario: 1},
-                            dataType:"json",
+                            type: 'POST',
+                            url: 'Api/core/module/admin/horarioGestor.php',
+                            data: { id: id, delete_horario: 1 },
+                            dataType: "json",
                             cache: false
-                        }).done(function(respuesta){
-                            if(respuesta[0] == 1){
-                                js_sistema.showErrorMsg(respuesta[1],'success',4000);
+                        }).done(function(respuesta) {
+                            if (respuesta[0] == 1) {
+                                js_sistema.showErrorMsg(respuesta[1], 'success', 4000);
                                 datatable.mDatatable('reload');
-                            }else{
-                                js_sistema.showErrorMsg(respuesta[1],'darger',4000);
+                            } else {
+                                js_sistema.showErrorMsg(respuesta[1], 'darger', 4000);
                             }
                         })
                     }
@@ -261,24 +262,24 @@ var js_horario = function() {
     }
 
 
-    return{
-        init: function(){
+    return {
+        init: function() {
             DatatableJsonHorario()
             handelHorarioSubmit()
         },
-        modalHorarioNewSubmit: function(){
+        modalHorarioNewSubmit: function() {
             modalHorarioNewSubmit()
         },
-        modalHorarioUpdateSubmit: function(id){
+        modalHorarioUpdateSubmit: function(id) {
             modalHorarioUpdateSubmit(id)
         },
-        modalHorarioDeleteSubmit: function(id){
+        modalHorarioDeleteSubmit: function(id) {
             modalHorarioDeleteSubmit(id)
         }
 
     }
 }();
 
-$(document).ready(function(){
+$(document).ready(function() {
     js_horario.init()
 })

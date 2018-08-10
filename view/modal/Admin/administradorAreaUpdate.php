@@ -1,5 +1,6 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorArea::set_area($_REQUEST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+<?php $rows = areaController::setArea($_REQUEST['id']) ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="update_area" value="1">
     <input type="hidden" name="id" value="<?php sistema::imprimir($rows[0])?>">

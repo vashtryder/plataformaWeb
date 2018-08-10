@@ -1,5 +1,6 @@
-<?php include_once '../../../conf.ini.php' ?>
-<?php $rows = gestorSeccion::set_seccion($_POST['id']) ?>
+<?php include_once '../../../Api/core/ControladorBase.php' ?>
+<?php include_once '../../../Api/config/sistema.php' ?>
+<?php $rows = seccionController::setSeccion($_POST['id']) ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="update_seccion" value="1">
     <input type="hidden" name="id" value="<?php sistema::imprimir($rows[0])?>">
