@@ -1,4 +1,4 @@
-var js_evento = function() {
+var js_historia = function() {
 
     var initialLocaleCode = 'es';
 
@@ -25,7 +25,7 @@ var js_evento = function() {
                 selectable: true,
                 droppable: true,
                 events: {
-                    url: 'view/module/tutor/tutorHistoria.php',
+                    url: 'Api/core/module/admin/historiaEtaGestor.php',
                 },
                 eventRender: function(event, element) {
                     if (element.hasClass('fc-day-grid-event')) {
@@ -43,7 +43,7 @@ var js_evento = function() {
                     element.click(function() {
                         $('#m_modalActualizar').modal('show');
 
-                        $.post('view/module/administrador/administradorEventoUpdate.php',function(data){
+                        $.post('view/modal/admin/administradorEventoUpdate.php', function(data) {
                             $('#m_modalUpdate').html(data);
                             $(".startTime").val(moment(event.start).format('YYYY-MM-DD'));
                             $(".endTime").val(moment(event.end).format('YYYY-MM-DD'));
@@ -54,9 +54,9 @@ var js_evento = function() {
                     });
 
                 },
-                select: function(startDate, endDate){
+                select: function(startDate, endDate) {
                     $('#m_modalAgregar').modal('show');
-                    $.post('view/module/administrador/administradorEventoNew.php',function(data){
+                    $.post('view/modal/admin/administradorEventoNew.php', function(data) {
                         $('#m_modalNew').html(data);
                         $(".startTime").val(startDate.format());
                         $(".endTime").val(endDate.format());
@@ -66,25 +66,25 @@ var js_evento = function() {
         },
         megaupload: function() {
             $('#btn-submit-event').click(function(e) {
-                e.preventDefault();  //stop the browser from following
+                e.preventDefault(); //stop the browser from following
                 link = $(this).attr('href');
-                window.location.href= link;
+                window.location.href = link;
             });
         },
         modalEventoNewSubmit: function() {
             $('#m_modalAgregar').modal('show');
-            $.post('view/module/administrador/administradorEventoNew.php',function(data){
+            $.post('view/modal/admin/administradorEventoNew.php', function(data) {
                 $('#m_modalNew').html(data);
             })
         },
-        modalEventoUpdateSubmit:function(id){
+        modalEventoUpdateSubmit: function(id) {
             $('#m_modalActualizar').modal('show');
-            $.post('view/module/administrador/administradorEventoUpdate.php',{id:id},function(data){
+            $.post('view/modal/admin/administradorEventoUpdate.php', { id: id }, function(data) {
                 $('#m_modalUpdate').html(data);
             })
         },
-        handelEventoSubmit: function(){
-            $('#btn-submit-new').click(function(e){
+        handelEventoSubmit: function() {
+            $('#btn-submit-new').click(function(e) {
                 e.preventDefault();
                 var btn = $(this);
                 var form = $(this).closest('form');
@@ -127,7 +127,7 @@ var js_evento = function() {
 
                 $.ajax({
                     type: "POST",
-                    url: "view/module/administrador/administrador.php",
+                    url: "Api/core/module/admin/historiaEtaGestor.php",
                     dataType: 'json',
                     data: formData,
                     cache: false,
@@ -139,58 +139,58 @@ var js_evento = function() {
                         $('#m_calendar').fullCalendar('refetchEvents');
                         $('#m_calendar').fullCalendar('rerenderEvents');
 
-                        if(response.respuestaFile == 1){
+                        if (response.respuestaFile == 1) {
                             $('#m_modalAgregar').modal('hide');
-                            js_sistema.showErrorMsg(response.message,'success');
-                        } else if(response.respuestaFile == 2) {
+                            js_sistema.showErrorMsg(response.message, 'success');
+                        } else if (response.respuestaFile == 2) {
                             $('#m_modalAgregar').modal('show');
-                            js_sistema.showErrorMsg(response.message,'warning');
+                            js_sistema.showErrorMsg(response.message, 'warning');
                         } else {
                             $('#m_modalAgregar').modal('show');
-                            js_sistema.showErrorMsg(response.message,'error');
+                            js_sistema.showErrorMsg(response.message, 'error');
                         }
                     }
                 });
             });
 
-            $('#btn_cancel-new').click(function(e){
+            $('#btn_cancel-new').click(function(e) {
                 $('#btn-submit-new').removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false)
             });
 
-            $('#btn-submit-update').click(function(e){
-            e.preventDefault();
-            var btn = $(this);
-            var form = $(this).closest('form');
+            $('#btn-submit-update').click(function(e) {
+                e.preventDefault();
+                var btn = $(this);
+                var form = $(this).closest('form');
 
-            btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
+                btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
 
-            form.ajaxSubmit({
-                type: 'POST',
-                url: 'view/module/administrador/administrador.php',
-                data: form.serialize(),
-                dataType: 'json',
-                success: function(response, status, xhr, $form, events) {
-                    btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
+                form.ajaxSubmit({
+                    type: 'POST',
+                    url: 'Api/core/module/admin/historiaEtaGestor.php',
+                    data: form.serialize(),
+                    dataType: 'json',
+                    success: function(response, status, xhr, $form, events) {
+                        btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
 
-                    $('#m_modalActualizar').modal("hide");
+                        $('#m_modalActualizar').modal("hide");
 
-                    $('#m_calendar').fullCalendar('refetchEvents');
-                    $('#m_calendar').fullCalendar('rerenderEvents');
+                        $('#m_calendar').fullCalendar('refetchEvents');
+                        $('#m_calendar').fullCalendar('rerenderEvents');
 
-                    if(response.respuestaFile == 1){
-                        js_sistema.showErrorMsg(response.message,'success',3000);
-                    }else{
-                        js_sistema.showErrorMsg(response.message,'danger',3000);
+                        if (response.respuestaFile == 1) {
+                            js_sistema.showErrorMsg(response.message, 'success', 3000);
+                        } else {
+                            js_sistema.showErrorMsg(response.message, 'danger', 3000);
+                        }
                     }
-                }
-            });
+                });
             });
 
-            $('#btn-cancel-update').click(function(e){
+            $('#btn-cancel-update').click(function(e) {
                 $('#btn-submit-update').removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false)
             });
 
-            $('#btn-submit-delete').click(function(e){
+            $('#btn-submit-delete').click(function(e) {
                 id = $(".eventid").val();
 
                 $('#m_modalActualizar').modal("hide");
@@ -203,20 +203,20 @@ var js_evento = function() {
                             className: "btn btn-outline-success",
                             callback: function() {
                                 $.ajax({
-                                    type:'POST',
-                                    url:'view/module/administrador/administrador.php',
-                                    data: {id:id, delete_evento: 1},
-                                    dataType:"json",
+                                    type: 'POST',
+                                    url: 'Api/core/module/admin/historiaEtaGestor.php',
+                                    data: { id: id, delete_evento: 1 },
+                                    dataType: "json",
                                     cache: false
-                                }).done(function(respuesta){
-                                    if(respuesta[0] == 1){
-                                        js_sistema.showErrorMsg(respuesta[1],'success',4000);
+                                }).done(function(respuesta) {
+                                    if (respuesta[0] == 1) {
+                                        js_sistema.showErrorMsg(respuesta[1], 'success', 4000);
 
                                         $('#m_calendar').fullCalendar('refetchEvents');
                                         $('#m_calendar').fullCalendar('rerenderEvents');
 
-                                    }else{
-                                        js_sistema.showErrorMsg(respuesta[1],'darger',4000);
+                                    } else {
+                                        js_sistema.showErrorMsg(respuesta[1], 'darger', 4000);
                                     }
                                 })
                             }
@@ -232,10 +232,10 @@ var js_evento = function() {
                 })
             });
 
-            $('#btn-submit-ver').click(function(e){
+            $('#btn-submit-ver').click(function(e) {
                 $('#m_modalActualizar').modal('hide');
                 id = $('#eventid').val();
-                $.post('view/module/administrador/administradorEventoVer.php',{id:id},function(response){
+                $.post('view/modal/admin/administradorEventoVer.php', { id: id }, function(response) {
 
                     // console.log("data", response.event_end);
 
@@ -246,14 +246,14 @@ var js_evento = function() {
                     $("#startTime").html(response.event_start);
                     $("#endTime").html(response.event_end);
 
-                    if(response.event_contact == 'media'){
-                        $('#eventLink').html('<video controls width="100%" height="auto" autoplay><source src="'+ response.event_url +'" ></video>');
-                        $('#btn-submit-event').attr('href',response.event_url);
+                    if (response.event_contact == 'media') {
+                        $('#eventLink').html('<video controls width="100%" height="auto" autoplay><source src="' + response.event_url + '" ></video>');
+                        $('#btn-submit-event').attr('href', response.event_url);
                     } else {
-                        $('#eventLink').html('<div class="responsive-wrapper responsive-wrapper-wxh-572x612" style="-webkit-overflow-scrolling: touch; overflow: auto;"><iframe src="'+ response.event_url +'" frameborder="0"></iframe></div>');
-                        $('#btn-submit-event').attr('href',response.event_url);
+                        $('#eventLink').html('<div class="responsive-wrapper responsive-wrapper-wxh-572x612" style="-webkit-overflow-scrolling: touch; overflow: auto;"><iframe src="' + response.event_url + '" frameborder="0"></iframe></div>');
+                        $('#btn-submit-event').attr('href', response.event_url);
                     }
-                },'json')
+                }, 'json')
             })
         }
 
@@ -261,6 +261,6 @@ var js_evento = function() {
 }();
 
 $(document).ready(function() {
-    js_evento.init();
-    js_evento.handelEventoSubmit();
+    js_historia.init();
+    js_historia.handelEventoSubmit();
 });

@@ -1,5 +1,5 @@
 <?php 
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
 
 	class GestorPreguntaEta
 	{
@@ -12,7 +12,9 @@
             array_push($data, $_REQUEST['curso']);
             array_push($data, $_REQUEST['eta']);
             array_push($data, $_REQUEST['cantidad']);
-            return preguntaEtaController::getPreguntaEtaNew($data);
+			$r = preguntaEtaController::getPreguntaEtaNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updatePreguntaAjax()
@@ -22,12 +24,16 @@
             array_push($data, $_REQUEST['eta']);
             array_push($data, $_REQUEST['cantidad']);
             array_push($data, $_REQUEST['id']);
-            return preguntaEtaController::getPreguntaEtaUpdate($data);
+			$r = preguntaEtaController::getPreguntaEtaUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deletePreguntaAjax()
         {
-			return preguntaEtaController::getPreguntaEtaDelete($_REQUEST['id']);
+			$r = preguntaEtaController::getPreguntaEtaDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 	}
 

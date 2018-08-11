@@ -1,7 +1,6 @@
 <?php
     include_once "../../core/ControladorBase.php";
-	$rs = gestorPersonal::get_personalAcademico($_REQUEST['e']);
-	
+	$rs = docenteController::getPersonalAcademico($_REQUEST['e']);
     $arrayName = array();
     foreach($rs as $row){
         $arrayName[] = array(
@@ -9,5 +8,5 @@
             'text' => $row[3]." ".$row[4]." ".$row[5]
         );
     }
-    sistema::imprimir(json_encode($arrayName))
+    print_r(json_encode($arrayName))
 ?>

@@ -1,7 +1,7 @@
 <?php 
-
-	include_once "Api/core/ControladorBase.php";
-
+	include_once "../../../core/ControladorBase.php";
+	include_once "../../../config/sistema.php";
+	
 	class GestorSeccion
 	{
 		public static function newSeccionAjax()
@@ -11,7 +11,9 @@
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['seccion']);
             array_push($data, sistema::substr($_REQUEST['seccion'],3));
-            return seccionController::getSeccionNew($data);
+			$r = seccionController::getSeccionNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateSeccionAjax()
@@ -19,12 +21,16 @@
             $data = array();
             array_push($data, $_REQUEST['seccion']);
             array_push($data, $_REQUEST['id']);
-            return seccionController::getSeccionUpdate($data);
+			$r = seccionController::getSeccionUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deleteSeccionAjax()
         {
-			return seccionController::getSeccionDeleteModel($_REQUEST['id']);
+			$r = seccionController::getSeccionDeleteModel($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 	}
 

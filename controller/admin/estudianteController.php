@@ -55,7 +55,5 @@
 		public static function getEstudianteLoginNew($data){
 			return estudianteModel::getEstudianteLoginNewModel($data);
 		}
-
-
 	}
 ?>

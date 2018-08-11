@@ -132,7 +132,7 @@
 
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorImportarEstudiante' || $_REQUEST['s'] == 'administradorImportarDocente') print_r('m-menu__item--active') ?> m-menu__item--submenu" m-menu-submenu-toggle="hover" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="javascript:;" class="m-menu__link m-menu__toggle">
-															<i class="m-menu__link-icon flaticon-upload"></i>
+															<i class="m-menu__link-icon flaticon-folder-4"></i>
 															<span class="m-menu__link-text">Importar</span>
 															<i class="m-menu__hor-arrow la la-angle-right"></i>
 															<i class="m-menu__ver-arrow la la-angle-right"></i>
@@ -142,14 +142,14 @@
 																<ul class="m-menu__subnav">
 																	<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorImportarEstudiante') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 																		<a href="?s=administradorImportarEstudiante" class="m-menu__link ">
-																		<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-																		<span class="m-menu__link-text">Estudiante</span>
+																		<i class="m-menu__link-icon flaticon-upload-1"></i>
+																		<span class="m-menu__link-text">Lista Estudiante</span>
 																	</a>
 																</li>
 																<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorImportarDocente') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 																	<a href="?s=administradorImportarDocente" class="m-menu__link ">
-																	<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-																		<span class="m-menu__link-text">Docente</span>
+																		<i class="m-menu__link-icon flaticon-upload-1"></i>
+																		<span class="m-menu__link-text">Lista Docente</span>
 																	</a>
 																</li>
 															</ul>
@@ -158,8 +158,8 @@
 
 													<li class="m-menu__item  <?php if($_REQUEST['s'] == 'administradorDireccion' || $_REQUEST['s'] == 'administradorTutor' || $_REQUEST['s'] == 'administradorPadre') echo 'm-menu__item--active' ?> m-menu__item--submenu" m-menu-submenu-toggle="hover" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="javascript:;" class="m-menu__link m-menu__toggle">
-															<i class="m-menu__link-icon flaticon-book"></i>
-															<span class="m-menu__link-text">Cuenta</span>
+															<i class="m-menu__link-icon flaticon-lock-1"></i>
+															<span class="m-menu__link-text">Cuentas</span>
 															<i class="m-menu__hor-arrow la la-angle-right"></i>
 															<i class="m-menu__ver-arrow la la-angle-right"></i>
 														</a>
@@ -168,20 +168,20 @@
 																<ul class="m-menu__subnav">
 																	<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorDireccion') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 																		<a href="?s=administradorDireccion" class="m-menu__link ">
-																		<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-																		<span class="m-menu__link-text">Dirección</span>
+																		<i class="m-menu__link-icon flaticon-users"></i>
+																		<span class="m-menu__link-text">Cuenta Dirección</span>
 																	</a>
 																</li>
 																<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorTutor') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 																	<a href="?s=administradorTutor" class="m-menu__link ">
-																		<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-																		<span class="m-menu__link-text">Tutor</span>
+																		<i class="m-menu__link-icon flaticon-users"></i>
+																		<span class="m-menu__link-text">Cuenta Tutor</span>
 																	</a>
 																</li>
 																<li class="m-menu__item  <?php if($_REQUEST['s'] == 'administradorPadre') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 																	<a href="?s=administradorPadre" class="m-menu__link ">
-																		<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-																		<span class="m-menu__link-text">Padre</span>
+																		<i class="m-menu__link-icon flaticon-users"></i>
+																		<span class="m-menu__link-text">Cuenta Estudiante/Padre</span>
 																	</a>
 																</li>
 															</ul>
@@ -212,31 +212,31 @@
 												<ul class="m-menu__inner">
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorGrado') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorGrado" class="m-menu__link ">
-														<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+														<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Grado Académico</span>
 													</a>
 													</li>
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorSeccion') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorSeccion" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Sección Académico</span>
 														</a>
 													</li>
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorNivel') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorNivel" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Nivel Académico</span>
 														</a>
 														</li>
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorAnio') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorAnio" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Año Académico</span>
 														</a>
 													</li>
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorPeriodo') echo 'm-menu__item--active' ?> " m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorPeriodo" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Unidad Académica</span>
 														</a>
 													</li>
@@ -250,13 +250,13 @@
 												<ul class="m-menu__inner">
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorArea') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorArea" class="m-menu__link ">
-														<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+														<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Área Académica</span>
 														</a>
 													</li>
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorCurso') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorCurso" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Curso Académico</span>
 														</a>
 													</li>
@@ -264,13 +264,13 @@
 													
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorAsignacion') echo 'm-menu__item--active' ?> " m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorAsignacion" class="m-menu__link ">
-														<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+														<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Asignación Tutoria</span>
 														</a>
 													</li>
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorHorario') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorHorario" class="m-menu__link ">
-														<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+														<i class="m-menu__link-icon flaticon-add"></i>
 															<span class="m-menu__link-text">Asignación Curso</span>
 														</a>
 													</li>
@@ -286,20 +286,20 @@
 													
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorSemanaEta') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorSemanaEta" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-calendar-2"></i>
 															<span class="m-menu__link-text">Semana ETA</span>
 														</a>
 													</li>
 													<li class="m-menu__item  <?php if($_REQUEST['s'] == 'administradorPreguntaEta') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1" aria-haspopup="true">
 														<a href="?s=administradorPreguntaEta" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-info"></i>
 															<span class="m-menu__link-text">Pregunta ETA</span>
 														</a>
 													</li>
 
 													<li class="m-menu__item <?php if($_REQUEST['s'] == 'administradorHistoria') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1"
 														aria-haspopup="true"><a href="?s=administradorHistoria" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-event-calendar-symbol"></i>
 															<span class="m-menu__link-text">Historia Reflexiva</span>
 														</a>
 													</li>
@@ -315,14 +315,14 @@
 
 													<li class="m-menu__item  <?php if($_REQUEST['s'] == 'administradorProceso') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1"
 														aria-haspopup="true"><a href="?s=administradorProceso" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-plus"></i>
 															<span class="m-menu__link-text">Proceso</span>
 														</a>
 													</li>
 
 													<li class="m-menu__item  <?php if($_REQUEST['s'] == 'administradorItem') echo 'm-menu__item--active' ?>" m-menu-link-redirect="1"
 														aria-haspopup="true"><a href="?s=administradorItem" class="m-menu__link ">
-															<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+															<i class="m-menu__link-icon flaticon-plus"></i>
 															<span class="m-menu__link-text">Item</span>
 														</a>
 													</li>

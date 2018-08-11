@@ -1,5 +1,6 @@
 <?php 
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
+	include_once "../../../config/sistema.php";
 	class GestorArea
 	{
 		public static function newAreaAjax()
@@ -12,7 +13,9 @@
             array_push($data, $_REQUEST['area']);
             array_push($data, sistema::get_format_string($_REQUEST['area']));
             array_push($data, 0);
-            return areaController::getAreaNew($data);
+			$r = areaController::getAreaNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateAreaAjax()
@@ -23,12 +26,16 @@
             array_push($data, sistema::get_format_string($_REQUEST['area']));
             array_push($data, 0);
             array_push($data, $_REQUEST['id']);
-            return areaController::getAreaUpdate($data);
+			$r = areaController::getAreaUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deleteAreaAjax()
         {
-            return areaController::getAreaDelete($_REQUEST['id']);
+			$r = areaController::getAreaDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 	}
 

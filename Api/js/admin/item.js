@@ -1,4 +1,5 @@
 var js_item = function() {
+    var strRootFile = 'Api/json';
     var datatable = $('.m_regItem');
 
     var DatatableJsonItem = function() {
@@ -162,7 +163,7 @@ var js_item = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/itemEtaGestor.php',
+                url: 'Api/core/module/admin/itemEtaGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -192,7 +193,7 @@ var js_item = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/itemEtaGestor.php',
+                url: 'Api/core/module/admin/itemEtaGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -225,7 +226,7 @@ var js_item = function() {
         $.post('view/modal/admin/administradorItemUpdate.php', { id: id }, function(data) {
             $('#m_modalUpdate').html(data);
             a = $('#idProceso').val(),
-                $.post("view/core/json/proceso.json.php", function(r) {
+                $.post(strRootFile + "/admin/proceso.json.php", function(r) {
                     $('.select2Proceso').select2({ data: r, cache: false });
                     $('.select2Proceso').val(a).trigger('change.select2')
                 }, 'json')
@@ -242,7 +243,7 @@ var js_item = function() {
                     callback: function() {
                         $.ajax({
                             type: 'POST',
-                            url: 'Api/core/module/itemEtaGestor.php',
+                            url: 'Api/core/module/admin/itemEtaGestor.php',
                             data: { id: id, delete_item: 1 },
                             dataType: "json",
                             cache: false

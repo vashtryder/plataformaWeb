@@ -166,7 +166,7 @@ var js_asignacion = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/admin/asignacionGestor.php',
+                url: 'Api/core/module/admin/tutorGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -196,7 +196,7 @@ var js_asignacion = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/admin/asignacionGestor.php',
+                url: 'Api/core/module/admin/tutorGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -266,7 +266,7 @@ var js_asignacion = function() {
                     callback: function() {
                         $.ajax({
                             type: 'POST',
-                            url: 'Api/core/module/admin/asignacionGestor.php',
+                            url: 'Api/core/module/admin/tutorGestor.php',
                             data: { id: id, delete_tutor: 1 },
                             dataType: "json",
                             cache: false

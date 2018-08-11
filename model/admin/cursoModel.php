@@ -25,7 +25,7 @@
             return EntidadBase::consultaForech($sql);
         }
 
-        public static function getCursoNew($data)
+        public static function getCursoNewModel($data)
         {
             $sql = "INSERT INTO " . self::$table . " (ID_CURSO, ID_ANIO, ID_AREA, CURSONOMBRE, CURSOABREVIATURA, CURSOORDEN) VALUES
             ('".EntidadBase::real_escape_string($data[0])."',

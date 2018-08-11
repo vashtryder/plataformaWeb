@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group m-form__group">
-    <select class="form-control m-input m-input--air select2Docente" name="docente" style="width: 100%">
+    <select class="form-control m-input m-input--air select2-Docente" name="docente" style="width: 100%">
         <option value="">SELECCIONE DOCENTE</option>
     </select>
 </div>

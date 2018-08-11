@@ -66,7 +66,7 @@
 <!-- end::Body -->
 
 <div class="modal fade" id="m_modalAgregar"  role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog modal-lg"" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">CREAR PROCESO ITEM</h5>
@@ -80,7 +80,7 @@
         </div>
       <div class="modal-footer">
         <button id="btn-submit-new" type="button" class="btn btn-outline-primary">Registar</button>
-        <button id="btn_cancel-new" type="button" class="btn btn-outline-metal" data-dismiss="modal">Cancelar</button>
+        <button id="btn-cancel-new" type="button" class="btn btn-outline-metal" data-dismiss="modal">Cancelar</button>
 
       </div>
     </form>

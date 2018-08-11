@@ -1,6 +1,5 @@
 <?php 
-
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
 
 	class GestorTutor
 	{
@@ -15,7 +14,9 @@
             array_push($data, $_REQUEST['grado']);
             array_push($data, $_REQUEST['seccion']);
             array_push($data, $_REQUEST['nivel']);
-            return tutorController::getTutorNew($data);
+			$r = tutorController::getTutorNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateTutorAjax()
@@ -27,12 +28,17 @@
             array_push($data, $_REQUEST['seccion']);
             array_push($data, $_REQUEST['nivel']);
             array_push($data, $_REQUEST['id']);
-            return tutorController::getTutorUpdate($data);
+			$r = tutorController::getTutorUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
+			
         }
 
         public static function deleteTutorAjax()
         {
-			return tutorController::getTutorDelete($_REQUEST['id']);
+			$r = tutorController::getTutorDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 	}
 

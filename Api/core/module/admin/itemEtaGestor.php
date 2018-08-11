@@ -1,5 +1,5 @@
 <?php 
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
 	
 	class GestorItem
     {
@@ -12,7 +12,9 @@
             array_push($data, $_REQUEST['nombre']);
             array_push($data, $_REQUEST['item']);
             array_push($data, 0);
-            return itemController::getItemNew($data);
+			$r = itemController::getItemNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateItemAjax()
@@ -23,12 +25,16 @@
             array_push($data, $_REQUEST['item']);
             array_push($data, 0);
             array_push($data, $_REQUEST['id']);
-            return itemController::getItemUpdate($data);
+			$r = itemController::getItemUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deleteItemAjax()
         {
-			return itemController::getItemDelete($_REQUEST['id']);
+			$r = itemController::getItemDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 	}
 

@@ -141,7 +141,7 @@ var js_seccion = function() {
             var btn = $(this);
             var form = $(this).closest('form');
 
-            // btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
+            btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
 
             form.ajaxSubmit({
                 type: 'POST',
@@ -149,7 +149,7 @@ var js_seccion = function() {
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
-                    // btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
+                    btn.removeClass('m-loader m-loader--right m-loader--primary').attr('disabled', false);
                     $('#m_modalActualizar').modal("hide");
                     if (response[0] == 1) {
                         js_sistema.showErrorMsg(response[1], 'success', 3000);

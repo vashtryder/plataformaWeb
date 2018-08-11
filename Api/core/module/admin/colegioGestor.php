@@ -1,6 +1,6 @@
 <?php 
 
-	include_once "../../ControladorBase.php";		
+	include_once "../../../core/ControladorBase.php";	
 
 	class GestorColegio
 	{

@@ -1,5 +1,6 @@
 <?php 
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
+	include_once "../../../config/sistema.php";
 
 	class GestorNivel
 	{
@@ -10,7 +11,9 @@
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['nivel']);
             array_push($data, sistema::substr($_REQUEST['nivel'],3));
-            return nivelController::getNivelNew($data);
+			$r = nivelController::getNivelNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateNivelAjax()
@@ -18,12 +21,16 @@
             $data = array();
             array_push($data, $_REQUEST['nivel']);
             array_push($data, $_REQUEST['id']);
-            return nivelController::getNivelUpdate($data);
+			$r = nivelController::getNivelUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deleteNivelAjax()
         {
-			return nivelController::getNivelDelete($_REQUEST['id']);
+			$r = nivelController::getNivelDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 	}
 

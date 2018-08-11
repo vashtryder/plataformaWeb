@@ -80,7 +80,7 @@
         </div>
       <div class="modal-footer">
         <button id="btn-submit-new" type="button" class="btn btn-outline-primary">Registar</button>
-        <button id="btn_cancel-new" type="button" class="btn btn-outline-metal" data-dismiss="modal">Cancelar</button>
+        <button id="btn-cancel-new" type="button" class="btn btn-outline-metal" data-dismiss="modal">Cancelar</button>
 
       </div>
     </form>

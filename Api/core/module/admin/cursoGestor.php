@@ -1,7 +1,6 @@
 <?php 
-
-	include_once "Api/core/ControladorBase.php";
-
+	include_once "../../../core/ControladorBase.php";
+	include_once "../../../config/sistema.php";
 	class GestorCurso
 	{
 		public static function newCursoAjax()
@@ -14,7 +13,9 @@
             array_push($data, $_REQUEST['curso']);
             array_push($data, sistema::get_format_string($_REQUEST['curso']));
             array_push($data, 0);
-            return cursoController::getCursoNew($data);
+			$r = cursoController::getCursoNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateCursoAjax()
@@ -25,12 +26,16 @@
             array_push($data, sistema::get_format_string($_REQUEST['curso']));
             array_push($data, 0);
             array_push($data, $_REQUEST['id']);
-            return cursoController::getCursoUpdate($data);
+			$r = cursoController::getCursoUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deleteCursoAjax()
         {
-			return cursoController::getCursoDelete($_REQUEST['id']);
+			$r = cursoController::getCursoDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 	}
 

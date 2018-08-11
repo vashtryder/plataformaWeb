@@ -225,7 +225,7 @@ var js_pregunta = function() {
         $.post('view/modal/admin/administradorPreguntaUpdate.php', { id: id }, function(data) {
             $('#m_modalUpdate').html(data);
             a = $('#colegio').val();
-            $.post(srtRootFile + "/director/colegio.json.php", function(r) {
+            $.post(srtRootFile + "/admin/colegio.json.php", function(r) {
                 $('.select2Colegio').select2({ data: r, cache: false });
                 $('.select2Colegio').val(a).trigger('change.select2')
             }, 'json');
@@ -248,7 +248,7 @@ var js_pregunta = function() {
                         $.ajax({
                             type: 'POST',
                             url: 'Api/core/module/admin/preguntaEtaGestor.php',
-                            data: { id: id, delete_tutor: 1 },
+                            data: { id: id, delete_pregunta: 1 },
                             dataType: "json",
                             cache: false
                         }).done(function(respuesta) {

@@ -25,7 +25,7 @@
 										<div class="m-portlet__head-tools">
 											<ul class="m-portlet__nav">
 												<li class="m-portlet__nav-item">
-													<a href="#" onclick="js_evento.modalEventoNewSubmit()"  class="m-portlet__nav-link m-portlet__nav-link--icon" data-toggle="m-tooltip" data-placement="top" title="" data-original-title="AGREGAR EVENTO"><i class="la la-plus-circle"></i></a>
+													<a href="#" onclick="js_historia.modalEventoNewSubmit()"  class="m-portlet__nav-link m-portlet__nav-link--icon" data-toggle="m-tooltip" data-placement="top" title="" data-original-title="AGREGAR HISTORIA REFLEXIVA"><i class="la la-plus-circle"></i></a>
 												</li>
 											</ul>
 										</div>

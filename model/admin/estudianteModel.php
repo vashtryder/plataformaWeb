@@ -60,18 +60,6 @@
             return EntidadBase::consultaForech($sql);
 		}
 		
-		public static function getEstudianteIdLoginModel()
-        {
-            $sql = "SELECT MAX(ID_LOGIN) FROM " . self::$table_login;
-            return EntidadBase::consultaForech($sql);
-        }
-		
-		public static function getEstudianteLoginModel($data)
-        {
-            $sql = "SELECT * FROM ".self::$table_login." WHERE ID_ESTUDIANTE = '".EntidadBase::real_escape_string($data)."'";
-            return EntidadBase::consultaForech($sql);
-        }
-
         public static function getEstudianteNewModel($data)
         {
             $sql = "INSERT INTO ".self::$table."(ID_ESTUDIANTE, ID_COLEGIO, ID_ANIO, ESTUDIANTEPATERNO, ESTUDIANTEMATERNO, ESTUDIANTENOMBRES, ESTUDIANTEDNI, ESTUDIANTESEXO, ESTUDIANTEEDAD, ESTUDIANTEFECHABNAC, ESTUDIANTEDOMILICIO, ESTUDIANTETELEFONO1, ESTUDIANTETELEFONO2, ESTUDIANTEEMAIL, ESTUDIANTEFOTO)
@@ -128,6 +116,18 @@
             return EntidadBase::consulta($sql);
 		}
 		
+		public static function getEstudianteIdLoginModel()
+        {
+            $sql = "SELECT MAX(ID_LOGIN) FROM " . self::$table_login;
+            return EntidadBase::consultaForech($sql);
+        }
+		
+		public static function getEstudianteLoginModel($data)
+        {
+            $sql = "SELECT * FROM ".self::$table_login." WHERE ID_ESTUDIANTE = '".EntidadBase::real_escape_string($data)."'";
+            return EntidadBase::consultaForech($sql);
+        }
+
 		public static function getEstudianteLoginNewModel($data)
         {
             $sql = "INSERT INTO tb_colegio_login_padre(ID_LOGIN, ID_COLEGIO, ID_ESTUDIANTE, LOGINUSUARIO, LOGINPASSWORD, LOGINESTADO) VALUES

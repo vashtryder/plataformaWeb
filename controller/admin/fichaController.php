@@ -29,7 +29,7 @@
 			return fichaModel::getFichaNewModel($data);
 		}
 
-		public function getFichaUpdate($data){
+		public static function getFichaUpdate($data){
 			return fichaModel::getFichaUpdateModel($data);
 		}
 		

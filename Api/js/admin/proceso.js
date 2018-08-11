@@ -117,7 +117,7 @@ var js_proceso = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/procesoEtaGestor.php',
+                url: 'Api/core/module/admin/procesoEtaGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -147,7 +147,7 @@ var js_proceso = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/procesoEtaGestor.php',
+                url: 'Api/core/module/admin/procesoEtaGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -193,7 +193,7 @@ var js_proceso = function() {
                     callback: function() {
                         $.ajax({
                             type: 'POST',
-                            url: 'Api/core/module/procesoEtaGestor.php',
+                            url: 'Api/core/module/admin/procesoEtaGestor.php',
                             data: { id: id, delete_proceso: 1 },
                             dataType: "json",
                             cache: false

@@ -71,7 +71,8 @@
             '".EntidadBase::real_escape_string($data[4])."',
             '".EntidadBase::real_escape_string($data[5])."')";
             return EntidadBase::consulta($sql);
-        }
+			// return $sql;
+		}
 
         public static function getSemanaEtaUpdateModel($data)
         {
@@ -82,13 +83,14 @@
             SEMANAFIN='".EntidadBase::real_escape_string($data[3])."'
              WHERE ID_SEMANA='".EntidadBase::real_escape_string($data[4])."'";
             return EntidadBase::consulta($sql);
-            // return $sql;
+            
         }
 
         public static function getSemanaEtaDeleteModel($data)
         {
             $sql = "DELETE FROM " . self::$table . " WHERE ID_SEMANA = '".EntidadBase::real_escape_string($data)."'";
-            return EntidadBase::consulta($sql);
+			return EntidadBase::consulta($sql);
+			// return $sql;
         }
     }
 ?>

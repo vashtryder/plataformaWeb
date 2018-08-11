@@ -1,6 +1,5 @@
 <?php 
-
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
 
 	class GestorSemanaEta
 	{
@@ -14,7 +13,11 @@
             array_push($data, $_REQUEST['nombre']);
             array_push($data, $_REQUEST['fechaini']);
             array_push($data, $_REQUEST['fechafin']);
-            return semanaEtaController::getSemanaEtaNew($data);
+			$r = semanaEtaController::getSemanaEtaNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			
+			print_r(json_encode($enviarDatos));
+
         }
 
         public static function updateSemanaAjax()
@@ -25,12 +28,18 @@
             array_push($data, $_REQUEST['fechaini']);
             array_push($data, $_REQUEST['fechafin']);
             array_push($data, $_REQUEST['id']);
-            return semanaEtaController::getSemanaEtaUpdate($data);
+			$r = semanaEtaController::getSemanaEtaUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
+			
         }
 
         public static function deleteSemanaAjax()
         {
-            return semanaEtaController::getSemanaEtaDelete($data);
+			$r = semanaEtaController::getSemanaEtaDelete($_REQUEST["id"]);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			// $enviarDatos = ($r !== false) ? array(1,$r) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 	}
 

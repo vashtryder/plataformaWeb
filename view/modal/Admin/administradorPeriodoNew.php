@@ -1,4 +1,5 @@
 
+<?php include_once '../../../Api/core/ControladorBase.php'?>
 <?php include_once '../../../Api/config/sistema.php' ?>
 <div class="form-group m-form__group">
     <input type="hidden" name="new_periodo" value="1">

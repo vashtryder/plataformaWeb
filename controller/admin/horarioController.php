@@ -21,11 +21,11 @@
 			return horarioModel::getHorarioNewModel($data);
 		}
 
-		public static function getHorarioUpdate(){
+		public static function getHorarioUpdate($data){
 			return horarioModel::getHorarioUpdateModel($data);
 		}
 
-		public function getHorarioDelete($data){
+		public static function getHorarioDelete($data){
 			return horarioController::getHorarioDeleteModel($data);
 		}
 	}

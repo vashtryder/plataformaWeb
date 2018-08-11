@@ -1,4 +1,5 @@
 var js_estudiante = function() {
+    var srtRootFile = 'Api/json';
     var datatable = $('.m_regEstudiante');
 
     var DatatableJsonEstudiante = function() {
@@ -37,7 +38,7 @@ var js_estudiante = function() {
                             url: 'Api/json/admin/matriculaTabla.json.php'
                         },
                     },
-                    pageSize: 10,
+                    pageSize: 20,
                 },
 
                 // layout definition
@@ -377,43 +378,43 @@ var js_estudiante = function() {
 
     var modalEstudianteNewSubmit = function() {
         $('#m_modalAgregar').modal('show');
-        $.post('view/modal/director/direccionMatriculaNew.php', function(data) {
+        $.post('view/modal/admin/administradorMatriculaNew.php', function(data) {
             $('#m_modalNew').html(data);
         })
     }
 
     var modalEstudianteAvatarSubmit = function(id, foto) {
         $('#m-modalFoto').modal('show');
-        $.post('view/modal/director/direccionMatriculaAvatar.php', { id: id, foto: foto }, function(data) {
+        $.post('view/modal/admin/administradorMatriculaAvatar.php', { id: id, foto: foto }, function(data) {
             $('#m_Avatar').html(data);
         })
     }
 
     var modalEstudianteUpdateSubmit = function(id) {
         $('#m_modalActualizar').modal('show');
-        $.post('view/modal/director/direccionMatriculaUpdate.php', { id: id }, function(data) {
+        $.post('view/modal/admin/administradorMatriculaUpdate.php', { id: id }, function(data) {
             $('#m_modalUpdate').html(data);
 
             a = $('#idgrado').val(),
-                $.post("view/core/json/grado.json.php", function(r) {
+                $.post(srtRootFile + "/admin/grado.json.php", function(r) {
                     $('.select2Grado').select2({ data: r, cache: false });
                     $('.select2Grado').val(a).trigger('change.select2')
                 }, 'json');
 
             b = $('#idseccion').val(),
-                $.post("view/core/json/seccion.json.php", function(r) {
+                $.post(srtRootFile + "/admin/seccion.json.php", function(r) {
                     $('.select2Seccion').select2({ data: r, cache: false });
                     $('.select2Seccion').val(b).trigger('change.select2')
                 }, 'json');
 
             c = $('#idnivel').val(),
-                $.post("view/core/json/nivel.json.php", function(r) {
+                $.post(srtRootFile + "/admin/nivel.json.php", function(r) {
                     $('.select2Nivel').select2({ data: r, cache: false });
                     $('.select2Nivel').val(c).trigger('change.select2')
                 }, 'json');
 
             d = $('#idcolegio').val(),
-                $.post("view/core/json/colegio.json.php", function(r) {
+                $.post(srtRootFile + "/admin/colegio.json.php", function(r) {
                     $('.select2Colegio').select2({ data: r, cache: false });
                     $('.select2Colegio').val(d).trigger('change.select2')
                 }, 'json')

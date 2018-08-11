@@ -126,7 +126,7 @@ var js_periodo = function() {
                 return;
             }
 
-            // btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
+            btn.addClass('m-loader m-loader--right m-loader--primary').attr('disabled', true);
 
             form.ajaxSubmit({
                 type: 'POST',

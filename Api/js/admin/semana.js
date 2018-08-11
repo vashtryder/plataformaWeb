@@ -175,7 +175,7 @@ var js_semana = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/admin/semanaGestor.php',
+                url: 'Api/core/module/admin/semanaEtaGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -205,7 +205,7 @@ var js_semana = function() {
 
             form.ajaxSubmit({
                 type: 'POST',
-                url: 'Api/core/module/admin/semanaGestor.php',
+                url: 'Api/core/module/admin/semanaEtaGestor.php',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function(response, status, xhr, $form) {
@@ -256,8 +256,8 @@ var js_semana = function() {
                     callback: function() {
                         $.ajax({
                             type: 'POST',
-                            url: 'Api/core/module/admin/semanaGestor.php',
-                            data: { id: id, delete_Semana: 1 },
+                            url: 'Api/core/module/admin/semanaEtaGestor.php',
+                            data: { id: id, delete_semana: 1 },
                             dataType: "json",
                             cache: false
                         }).done(function(respuesta) {

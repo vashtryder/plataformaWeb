@@ -180,8 +180,8 @@
 				   $filename[] = 'admin/registroEta.js';
 			   break;
    
-			   case 'administradorEvento':
-				   $filename[] = 'admin/evento.js';
+			   case 'administradorHistoria':
+				   $filename[] = 'admin/historia.js';
 			   break;
    
 			   case 'administradorPerfil':

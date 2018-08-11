@@ -90,7 +90,7 @@ var js_importar = function() {
                             <span></span>\
                         </div>\
                         <div class="m-alert__text">\
-                            <strong>' + response + '</strong>\
+                            <strong>' + $.trim(response) + '</strong>\
                         </div>\
                     </div>\
                     ');
@@ -101,7 +101,7 @@ var js_importar = function() {
         $('#btn-submit-exportar').click(function(e) {
             e.preventDefault();
             $.post(srtRootFile + '/admin/reporteExportarEstudiante.xls.php', function(response) {
-                window.location = 'assets/reports/archive/' + response;
+                window.location = 'assets/reports/archive/' + $.trim(response);
             })
         });
 
@@ -183,7 +183,7 @@ var js_importar = function() {
         $('#btn-submit-exportar2').click(function(e) {
             e.preventDefault();
             $.post(srtRootFile + '/admin/reporteExportarDocente.xls.php', function(response) {
-                window.location = 'asset/reports/archive/' + response;
+                window.location = 'assets/reports/archive/' + $.trim(response);
             })
         });
 
@@ -344,7 +344,7 @@ var js_importar = function() {
 
                     } else {
                         $('.regImportar').html('');
-                        window.location = 'assets/reports/archive/' + response;
+                        window.location = 'assets/reports/archive/' + $.trim(response);
                     }
                 }
             });

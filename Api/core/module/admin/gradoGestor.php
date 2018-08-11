@@ -1,7 +1,7 @@
 <?php 
-
-	include_once "Api/core/ControladorBase.php";
-
+	include_once "../../../core/ControladorBase.php";
+	include_once "../../../config/sistema.php";
+	
 	class GestorGrado
 	{
 		public static function newGradoAjax()
@@ -11,7 +11,9 @@
             array_push($data, $row[0] + 1);
             array_push($data, $_REQUEST['grado']);
             array_push($data, sistema::substr($_REQUEST['grado'],3));
-            return gradoController::getGradoNew($data);
+			$r = gradoController::getGradoNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updateGradoAjax()
@@ -19,12 +21,16 @@
             $data = array();
             array_push($data, $_REQUEST['grado']);
             array_push($data, $_REQUEST['id']);
-            return gradoController::getGradoUpdate($data);
+			$r = gradoController::getGradoUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deleteGradoAjax()
         {
-			return gradoController::getGradoDelete($_REQUEST['id']);
+			$r = gradoController::getGradoDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 	}
 

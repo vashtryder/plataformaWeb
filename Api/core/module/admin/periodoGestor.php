@@ -1,6 +1,5 @@
 <?php 
-
-	include_once "Api/core/ControladorBase.php";
+	include_once "../../../core/ControladorBase.php";
 
 	class GestorPeriodo
 	{
@@ -16,7 +15,10 @@
             array_push($data, $_REQUEST['periodo']);
             array_push($data, $_REQUEST['observacion']);
 
-            return periodoController::getPeriodoNew($data);
+			$r = periodoController::getPeriodoNew($data);
+			$enviarDatos = ($r !== false) ? array(1,GUARDADO) : array(0,ERROR);
+			// $enviarDatos = ($r !== false) ? array(1,$r) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function updatePeriodoAjax()
@@ -25,12 +27,16 @@
             array_push($data, $_REQUEST['periodo']);
             array_push($data, $_REQUEST['observacion']);
             array_push($data, $_REQUEST['id']);
-            return periodoController::getPeriodoUpdate($data);
+			$r = periodoController::getPeriodoUpdate($data);
+			$enviarDatos = ($r !== false) ? array(1,ACTUALIZADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
         }
 
         public static function deletePeriodoAjax()
         {
-			return periodoController::getPeriodoDelete($_REQUEST['id']);
+			$r = periodoController::getPeriodoDelete($_REQUEST['id']);
+			$enviarDatos = ($r !== false) ? array(1,ELIMINADO) : array(0,ERROR);
+			print_r(json_encode($enviarDatos));
 		}
 	}
 

@@ -41,7 +41,8 @@
             '".EntidadBase::real_escape_string($data[2])."',
             '".EntidadBase::real_escape_string($data[3])."',
             '".EntidadBase::real_escape_string($data[4])."')";
-            return EntidadBase::consulta($sql);
+			return EntidadBase::consulta($sql);
+			// return $sql;
         }
 
         public static function getPeriodoUpdateModel($data)
